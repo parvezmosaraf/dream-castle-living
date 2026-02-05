@@ -88,7 +88,7 @@ const CookieConsent = () => {
                 className="fixed bottom-0 left-0 right-0 z-50 p-4 md:p-6"
             >
                 <div className="container mx-auto max-w-6xl">
-                    <div className="glass-card-dark border border-white/10 shadow-2xl">
+                    <div className="bg-gradient-to-r from-primary via-primary/98 to-primary border-2 border-secondary/40 shadow-2xl rounded-2xl backdrop-blur-xl">
                         {!showSettings ? (
                             // Simple Banner
                             <div className="p-6 md:p-8">
