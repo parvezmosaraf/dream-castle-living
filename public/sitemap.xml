@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://dream-castle-living.vercel.app/</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dream-castle-living.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://dream-castle-living.vercel.app/" />
+  </url>
+  
+  <!-- Project Details Page -->
+  <url>
+    <loc>https://dream-castle-living.vercel.app/project</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dream-castle-living.vercel.app/project" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://dream-castle-living.vercel.app/project" />
+  </url>
+  
+  <!-- Amenities Page -->
+  <url>
+    <loc>https://dream-castle-living.vercel.app/amenities</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dream-castle-living.vercel.app/amenities" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://dream-castle-living.vercel.app/amenities" />
+  </url>
+  
+  <!-- Gallery Page -->
+  <url>
+    <loc>https://dream-castle-living.vercel.app/gallery</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dream-castle-living.vercel.app/gallery" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://dream-castle-living.vercel.app/gallery" />
+  </url>
+  
+  <!-- Location Page -->
+  <url>
+    <loc>https://dream-castle-living.vercel.app/location</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dream-castle-living.vercel.app/location" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://dream-castle-living.vercel.app/location" />
+  </url>
+  
+  <!-- Contact Page -->
+  <url>
+    <loc>https://dream-castle-living.vercel.app/contact</loc>
+    <lastmod>2026-02-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://dream-castle-living.vercel.app/contact" />
+    <xhtml:link rel="alternate" hreflang="bn" href="https://dream-castle-living.vercel.app/contact" />
+  </url>
+  
+</urlset>

@@ -39,8 +39,8 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 backdrop-blur-sm text-secondary font-medium text-sm mb-6">
-                <MapPin className="w-4 h-4" />
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg border border-white/20 dark:border-gray-700/50 text-primary dark:text-white font-semibold text-sm mb-6">
+                <MapPin className="w-4 h-4 text-secondary" />
                 {t('hero.location')}
               </span>
             </motion.div>
