@@ -22,17 +22,17 @@ export const generateBrochure = () => {
 
     // Company name at top
     pdf.setTextColor(...whiteColor);
-    pdf.setFontSize(12);
+    pdf.setFontSize(10);
     pdf.setFont('helvetica', 'normal');
     pdf.text('SEA DREAM CONSTRUCTION & DEVELOPMENTS LTD', pageWidth / 2, 45, { align: 'center' });
 
     // Main title - DREAM CASTLE
-    pdf.setFontSize(48);
+    pdf.setFontSize(36);
     pdf.setFont('helvetica', 'bold');
     pdf.text('DREAM CASTLE', pageWidth / 2, 100, { align: 'center' });
 
     // LIVING subtitle
-    pdf.setFontSize(42);
+    pdf.setFontSize(32);
     pdf.setTextColor(...secondaryColor);
     pdf.text('LIVING', pageWidth / 2, 120, { align: 'center' });
 
@@ -42,12 +42,12 @@ export const generateBrochure = () => {
 
     // Subtitle
     pdf.setTextColor(...whiteColor);
-    pdf.setFontSize(16);
+    pdf.setFontSize(13);
     pdf.setFont('helvetica', 'normal');
     pdf.text('Premium Lake View Apartments', pageWidth / 2, 145, { align: 'center' });
 
     // Location
-    pdf.setFontSize(14);
+    pdf.setFontSize(11);
     pdf.setTextColor(...secondaryColor);
     pdf.text('Ashulia Model Town, Savar, Dhaka', pageWidth / 2, 155, { align: 'center' });
 
@@ -56,7 +56,7 @@ export const generateBrochure = () => {
     pdf.rect(30, 170, 150, 80, 'F');
 
     pdf.setTextColor(...whiteColor);
-    pdf.setFontSize(14);
+    pdf.setFontSize(11);
     pdf.setFont('helvetica', 'bold');
 
     const highlights = [
@@ -78,9 +78,9 @@ export const generateBrochure = () => {
     pdf.setFillColor(...secondaryColor);
     pdf.rect(40, 260, 130, 20, 'F');
     pdf.setTextColor(...primaryColor);
-    pdf.setFontSize(18);
+    pdf.setFontSize(14);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('Starting from ৳38,75,000', pageWidth / 2, 273, { align: 'center' });
+    pdf.text('Starting from BDT 38,75,000', pageWidth / 2, 273, { align: 'center' });
 
     // Footer
     pdf.setTextColor(...whiteColor);
@@ -212,10 +212,10 @@ export const generateBrochure = () => {
     pdf.setFillColor(...secondaryColor);
     pdf.rect(20, y, 170, 35, 'F');
     pdf.setTextColor(...whiteColor);
-    pdf.setFontSize(24);
+    pdf.setFontSize(18);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('Starting Price: ৳38,75,000', pageWidth / 2, y + 15, { align: 'center' });
-    pdf.setFontSize(12);
+    pdf.text('Starting Price: BDT 38,75,000', pageWidth / 2, y + 15, { align: 'center' });
+    pdf.setFontSize(10);
     pdf.setFont('helvetica', 'normal');
     pdf.text('(Thirty-Eight Lakh Seventy-Five Thousand Taka)', pageWidth / 2, y + 27, { align: 'center' });
 
@@ -233,11 +233,11 @@ export const generateBrochure = () => {
     pdf.setTextColor(...darkText);
 
     const payments = [
-        { label: 'Base Price:', value: '৳38,75,000' },
-        { label: 'Share Price:', value: '৳9,30,000' },
-        { label: 'Down Payment:', value: '৳6,00,000' },
-        { label: 'Monthly EMI (36 months):', value: '৳1,00,000' },
-        { label: 'Total Investment:', value: '৳48,05,000', bold: true }
+        { label: 'Base Price:', value: 'BDT 38,75,000' },
+        { label: 'Share Price:', value: 'BDT 9,30,000' },
+        { label: 'Down Payment:', value: 'BDT 6,00,000' },
+        { label: 'Monthly EMI (36 months):', value: 'BDT 1,00,000' },
+        { label: 'Total Investment:', value: 'BDT 48,05,000', bold: true }
     ];
 
     payments.forEach((payment, index) => {
@@ -272,7 +272,7 @@ export const generateBrochure = () => {
         '✓ Prime location in Ashulia Model Town',
         '✓ Stunning lake views from every unit',
         '✓ Easy EMI payment plans',
-        '✓ High rental income potential (৳30-35K/month)',
+        '✓ High rental income potential (BDT 30-35K/month)',
         '✓ Excellent connectivity to Dhaka',
         '✓ Near universities and educational institutions',
         '✓ Future Uttara bridge proximity',
