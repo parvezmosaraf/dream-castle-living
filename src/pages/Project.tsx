@@ -2,12 +2,13 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingButtons from '@/components/FloatingButtons';
-import { 
-  Check, 
-  ArrowRight, 
-  FileText, 
-  Building2, 
-  Layers, 
+import { generateBrochure } from '@/utils/brochureGenerator';
+import {
+  Check,
+  ArrowRight,
+  FileText,
+  Building2,
+  Layers,
   MapPin,
   Calendar,
   TrendingUp,
@@ -51,14 +52,14 @@ const Project = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       {/* Hero */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <img src={heroImage} alt="The Dream Castle" className="w-full h-full object-cover opacity-20" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
         </div>
-        
+
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -72,7 +73,7 @@ const Project = () => {
               The Dream <span className="text-gradient">Castle</span>
             </h1>
             <p className="text-muted-foreground text-lg mt-6">
-              A premium residential development offering luxury living with world-class 
+              A premium residential development offering luxury living with world-class
               amenities and stunning lake views in Ashulia.
             </p>
           </motion.div>
@@ -213,22 +214,20 @@ const Project = () => {
                 { label: 'Monthly EMI (36 months)', value: '৳ 1,00,000/month', highlight: true },
                 { label: 'Total Price', value: '৳ 48,05,000', bold: true },
               ].map((item) => (
-                <div 
+                <div
                   key={item.label}
-                  className={`flex justify-between items-center py-4 border-b border-border ${
-                    item.bold ? 'border-none pt-6' : ''
-                  }`}
+                  className={`flex justify-between items-center py-4 border-b border-border ${item.bold ? 'border-none pt-6' : ''
+                    }`}
                 >
                   <span className={`${item.bold ? 'font-semibold text-foreground' : 'text-muted-foreground'}`}>
                     {item.label}
                   </span>
-                  <span className={`${
-                    item.bold 
-                      ? 'text-2xl font-display font-bold text-gradient' 
-                      : item.highlight 
-                        ? 'font-bold text-primary text-lg' 
-                        : 'font-semibold text-foreground text-lg'
-                  }`}>
+                  <span className={`${item.bold
+                    ? 'text-2xl font-display font-bold text-gradient'
+                    : item.highlight
+                      ? 'font-bold text-primary text-lg'
+                      : 'font-semibold text-foreground text-lg'
+                    }`}>
                     {item.value}
                   </span>
                 </div>
@@ -240,7 +239,7 @@ const Project = () => {
                 <span>Book Now</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <button className="btn-outline-luxury flex items-center gap-2">
+              <button onClick={generateBrochure} className="btn-outline-luxury flex items-center gap-2">
                 <FileText className="w-5 h-5" />
                 <span>Download Brochure</span>
               </button>

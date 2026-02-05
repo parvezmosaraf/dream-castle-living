@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Check, ArrowRight, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { generateBrochure } from '@/utils/brochureGenerator';
 
 const PricingSection = () => {
   const features = [
@@ -34,7 +35,7 @@ const PricingSection = () => {
             Affordable Luxury Living
           </h2>
           <p className="text-primary-foreground/80 mt-4 max-w-2xl mx-auto">
-            Own your dream home with our flexible payment plan. Start your journey 
+            Own your dream home with our flexible payment plan. Start your journey
             towards premium living today.
           </p>
         </motion.div>
@@ -54,7 +55,7 @@ const PricingSection = () => {
                 <h3 className="font-display text-2xl font-bold text-foreground mb-6">
                   Payment Structure
                 </h3>
-                
+
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-4 border-b border-border">
                     <span className="text-muted-foreground">Base Price</span>
@@ -109,7 +110,7 @@ const PricingSection = () => {
                 <span>Book Now</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <button className="btn-outline-luxury flex items-center gap-2">
+              <button onClick={generateBrochure} className="btn-outline-luxury flex items-center gap-2">
                 <FileText className="w-5 h-5" />
                 <span>Download Brochure</span>
               </button>
@@ -128,7 +129,7 @@ const PricingSection = () => {
               <h3 className="font-display text-2xl font-bold text-primary-foreground mb-4">
                 Investment Returns
               </h3>
-              
+
               <div className="py-8 border-y border-primary-foreground/20 my-6">
                 <p className="text-primary-foreground/70 text-sm mb-2">Monthly Rental Income</p>
                 <p className="text-5xl font-display font-bold text-secondary">
