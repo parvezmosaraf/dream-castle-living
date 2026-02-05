@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { Phone, Calendar, MessageCircle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const CTASection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="section-padding bg-gradient-to-br from-primary via-accent to-primary relative overflow-hidden">
       {/* Decorative Elements */}
@@ -23,17 +26,16 @@ const CTASection = () => {
             viewport={{ once: true }}
             className="inline-block px-4 py-2 bg-secondary/20 rounded-full text-secondary text-sm font-medium mb-6"
           >
-            Limited Units Available
+            {t('cta.subtitle')}
           </motion.span>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold text-primary-foreground mb-6">
-            Ready to Own Your <br />
-            <span className="text-gradient-gold">Dream Home?</span>
+            {t('cta.title')} <br />
+            <span className="text-gradient-gold">{t('cta.titleHighlight')}</span>
           </h2>
 
           <p className="text-lg text-primary-foreground/80 mb-10">
-            Don't miss this exclusive opportunity to be part of The Dream Castle community. 
-            Contact us today to schedule a visit and secure your future.
+            {t('cta.description')}
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
@@ -42,7 +44,7 @@ const CTASection = () => {
               className="btn-gold flex items-center gap-2 group w-full sm:w-auto justify-center"
             >
               <Calendar className="w-5 h-5" />
-              <span>Schedule a Visit</span>
+              <span>{t('common.scheduleVisit')}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
@@ -50,7 +52,7 @@ const CTASection = () => {
               className="btn-outline-luxury !border-primary-foreground/30 !text-primary-foreground hover:!bg-primary-foreground hover:!text-primary flex items-center gap-2 w-full sm:w-auto justify-center"
             >
               <Phone className="w-5 h-5" />
-              <span>Call Now</span>
+              <span>{t('common.callNow')}</span>
             </a>
           </div>
 
@@ -68,7 +70,7 @@ const CTASection = () => {
                 <Phone className="w-6 h-6 text-foreground" />
               </div>
               <div className="text-left">
-                <p className="text-primary-foreground/70 text-sm">Sales Hotline</p>
+                <p className="text-primary-foreground/70 text-sm">{t('cta.salesHotline')}</p>
                 <p className="text-primary-foreground font-semibold">+880 1901 372340</p>
               </div>
             </motion.a>
@@ -85,7 +87,7 @@ const CTASection = () => {
                 <MessageCircle className="w-6 h-6 text-foreground" />
               </div>
               <div className="text-left">
-                <p className="text-primary-foreground/70 text-sm">WhatsApp</p>
+                <p className="text-primary-foreground/70 text-sm">{t('cta.whatsapp')}</p>
                 <p className="text-primary-foreground font-semibold">+880 1647 712961</p>
               </div>
             </motion.a>
