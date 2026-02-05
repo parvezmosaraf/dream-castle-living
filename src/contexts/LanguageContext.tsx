@@ -6,7 +6,7 @@ type Language = 'en' | 'bn';
 interface LanguageContextType {
     language: Language;
     setLanguage: (lang: Language) => void;
-    t: (key: string) => string;
+    t: (key: string) => any;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -38,7 +38,7 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
     };
 
     // Translation function with nested key support
-    const t = (key: string): string => {
+    const t = (key: string): any => {
         const keys = key.split('.');
         let value: any = translations[language];
 
@@ -50,7 +50,7 @@ export const LanguageProvider = ({ children }: LanguageProviderProps) => {
             }
         }
 
-        return typeof value === 'string' ? value : key;
+        return value !== undefined ? value : key;
     };
 
     return (
