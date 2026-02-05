@@ -1,5 +1,4 @@
 import jsPDF from 'jspdf';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 export const generateBrochure = () => {
     const pdf = new jsPDF('p', 'mm', 'a4');
@@ -7,347 +6,381 @@ export const generateBrochure = () => {
     const pageHeight = 297;
 
     // Colors matching the brand
-    const primaryColor = '#0A2E3C';
-    const secondaryColor = '#C9A961';
-    const textColor = '#333333';
+    const primaryColor = [10, 46, 60]; // #0A2E3C
+    const secondaryColor = [201, 169, 97]; // #C9A961
+    const whiteColor = [255, 255, 255];
+    const darkText = [51, 51, 51];
 
-    // Page 1: Cover Page
-    // Background gradient effect
-    pdf.setFillColor(10, 46, 60); // Primary color
+    // ==================== PAGE 1: COVER PAGE ====================
+    // Full page dark background
+    pdf.setFillColor(...primaryColor);
     pdf.rect(0, 0, pageWidth, pageHeight, 'F');
 
-    // Gold accent bar
-    pdf.setFillColor(201, 169, 97); // Secondary color
-    pdf.rect(0, 80, pageWidth, 3, 'F');
+    // Top gold accent bar
+    pdf.setFillColor(...secondaryColor);
+    pdf.rect(0, 60, pageWidth, 4, 'F');
 
-    // Company Logo placeholder (you can add actual logo later)
-    pdf.setFillColor(255, 255, 255);
-    pdf.circle(pageWidth / 2, 50, 15, 'F');
+    // Company name at top
+    pdf.setTextColor(...whiteColor);
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'normal');
+    pdf.text('SEA DREAM CONSTRUCTION & DEVELOPMENTS LTD', pageWidth / 2, 45, { align: 'center' });
 
-    // Title
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(32);
+    // Main title - DREAM CASTLE
+    pdf.setFontSize(48);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('DREAM CASTLE', pageWidth / 2, 110, { align: 'center' });
-    pdf.text('LIVING', pageWidth / 2, 125, { align: 'center' });
+    pdf.text('DREAM CASTLE', pageWidth / 2, 100, { align: 'center' });
+
+    // LIVING subtitle
+    pdf.setFontSize(42);
+    pdf.setTextColor(...secondaryColor);
+    pdf.text('LIVING', pageWidth / 2, 120, { align: 'center' });
+
+    // Decorative line
+    pdf.setFillColor(...secondaryColor);
+    pdf.rect(70, 130, 70, 2, 'F');
 
     // Subtitle
-    pdf.setFontSize(14);
+    pdf.setTextColor(...whiteColor);
+    pdf.setFontSize(16);
     pdf.setFont('helvetica', 'normal');
-    pdf.text('Premium Lake View Apartments', pageWidth / 2, 140, { align: 'center' });
-    pdf.text('Ashulia Model Town, Savar, Dhaka', pageWidth / 2, 150, { align: 'center' });
+    pdf.text('Premium Lake View Apartments', pageWidth / 2, 145, { align: 'center' });
 
-    // Gold decorative line
-    pdf.setFillColor(201, 169, 97);
-    pdf.rect(70, 160, 70, 1, 'F');
+    // Location
+    pdf.setFontSize(14);
+    pdf.setTextColor(...secondaryColor);
+    pdf.text('Ashulia Model Town, Savar, Dhaka', pageWidth / 2, 155, { align: 'center' });
 
-    // Key highlights
-    pdf.setFontSize(12);
-    pdf.setTextColor(201, 169, 97);
+    // Key highlights in a box
+    pdf.setFillColor(255, 255, 255, 0.1);
+    pdf.rect(30, 170, 150, 80, 'F');
+
+    pdf.setTextColor(...whiteColor);
+    pdf.setFontSize(14);
+    pdf.setFont('helvetica', 'bold');
+
     const highlights = [
-        '✦ 1550 sqft Spacious Units',
-        '✦ B+G+10 Floors Building',
-        '✦ Breathtaking Lake Views',
-        '✦ EMI Payment Options',
-        '✦ Premium Amenities',
-        '✦ 10 Katha Land Area'
+        '✦  1550 sqft Spacious Units',
+        '✦  B+G+10 Floors Building',
+        '✦  Breathtaking Lake Views',
+        '✦  Flexible EMI Options',
+        '✦  Premium Amenities',
+        '✦  10 Katha Land Area'
     ];
 
-    let yPos = 180;
+    let yPos = 185;
     highlights.forEach(highlight => {
         pdf.text(highlight, pageWidth / 2, yPos, { align: 'center' });
-        yPos += 10;
+        yPos += 12;
     });
+
+    // Price highlight box
+    pdf.setFillColor(...secondaryColor);
+    pdf.rect(40, 260, 130, 20, 'F');
+    pdf.setTextColor(...primaryColor);
+    pdf.setFontSize(18);
+    pdf.setFont('helvetica', 'bold');
+    pdf.text('Starting from ৳38,75,000', pageWidth / 2, 273, { align: 'center' });
 
     // Footer
-    pdf.setFontSize(10);
-    pdf.setTextColor(255, 255, 255);
-    pdf.text('Sea Dream Construction & Developments Ltd', pageWidth / 2, 270, { align: 'center' });
-    pdf.text('+880 1901 372340 | seadreamconstruction@gmail.com', pageWidth / 2, 280, { align: 'center' });
-
-    // Page 2: Project Overview
-    pdf.addPage();
-
-    // Header
-    pdf.setFillColor(10, 46, 60);
-    pdf.rect(0, 0, pageWidth, 40, 'F');
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(20);
-    pdf.setFont('helvetica', 'bold');
-    pdf.text('PROJECT OVERVIEW', pageWidth / 2, 25, { align: 'center' });
-
-    // Content
-    pdf.setTextColor(51, 51, 51);
+    pdf.setTextColor(...whiteColor);
     pdf.setFontSize(11);
     pdf.setFont('helvetica', 'normal');
+    pdf.text('+880 1901 372340  |  +880 1647 712961', pageWidth / 2, 288, { align: 'center' });
 
-    let y = 55;
+    // ==================== PAGE 2: PROJECT OVERVIEW ====================
+    pdf.addPage();
 
-    // About the Project
-    pdf.setFontSize(14);
+    // Header with background
+    pdf.setFillColor(...primaryColor);
+    pdf.rect(0, 0, pageWidth, 50, 'F');
+    pdf.setTextColor(...whiteColor);
+    pdf.setFontSize(28);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(10, 46, 60);
-    pdf.text('About Dream Castle Living', 20, y);
-    y += 10;
+    pdf.text('PROJECT OVERVIEW', pageWidth / 2, 32, { align: 'center' });
 
-    pdf.setFontSize(10);
+    let y = 70;
+
+    // About section
+    pdf.setFontSize(18);
+    pdf.setFont('helvetica', 'bold');
+    pdf.setTextColor(...primaryColor);
+    pdf.text('About Dream Castle Living', 20, y);
+    y += 12;
+
+    pdf.setFontSize(11);
     pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(51, 51, 51);
-    const aboutText = 'Dream Castle Living offers an unparalleled residential experience in the heart of Ashulia Model Town. Our premium apartments combine modern luxury with natural beauty, featuring stunning lake views and world-class amenities. Built by Sea Dream Developments Ltd, this project represents the perfect blend of comfort, elegance, and affordability.';
+    pdf.setTextColor(...darkText);
+    const aboutText = 'Dream Castle Living offers an unparalleled residential experience in the heart of Ashulia Model Town. Our premium apartments combine modern luxury with natural beauty, featuring stunning lake views and world-class amenities.';
     const splitAbout = pdf.splitTextToSize(aboutText, 170);
     pdf.text(splitAbout, 20, y);
-    y += splitAbout.length * 5 + 10;
+    y += splitAbout.length * 6 + 15;
 
-    // Key Features
-    pdf.setFontSize(14);
+    // Key Features in two columns
+    pdf.setFontSize(18);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(10, 46, 60);
+    pdf.setTextColor(...primaryColor);
     pdf.text('Key Features', 20, y);
-    y += 10;
+    y += 12;
 
-    pdf.setFontSize(10);
+    // Left column
+    pdf.setFontSize(11);
     pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(51, 51, 51);
+    pdf.setTextColor(...darkText);
 
-    const features = [
-        { label: 'Unit Size:', value: '1550 sqft' },
-        { label: 'Building Structure:', value: 'B+G+10 Floors' },
-        { label: 'Land Area:', value: '10 Katha' },
-        { label: 'Bedrooms:', value: '3 Bedrooms' },
-        { label: 'Bathrooms:', value: '3 Bathrooms' },
-        { label: 'Balconies:', value: 'Spacious Balconies with Lake View' },
-        { label: 'Parking:', value: 'Dedicated Parking Space' },
-        { label: 'Lift:', value: 'High-Speed Elevators' }
+    const leftFeatures = [
+        '• Unit Size: 1550 sqft',
+        '• Building: B+G+10 Floors',
+        '• Land Area: 10 Katha',
+        '• Bedrooms: 3 Spacious Rooms',
+        '• Bathrooms: 3 Modern Bathrooms'
     ];
 
-    features.forEach(feature => {
-        pdf.setFont('helvetica', 'bold');
-        pdf.text(feature.label, 25, y);
-        pdf.setFont('helvetica', 'normal');
-        pdf.text(feature.value, 70, y);
-        y += 7;
+    const rightFeatures = [
+        '• Balconies: Lake View Balconies',
+        '• Parking: Dedicated Space',
+        '• Lift: High-Speed Elevators',
+        '• Security: 24/7 CCTV',
+        '• Power: Backup Generator'
+    ];
+
+    let leftY = y;
+    leftFeatures.forEach(feature => {
+        pdf.text(feature, 25, leftY);
+        leftY += 8;
     });
 
-    // Amenities Section
-    y += 10;
-    pdf.setFontSize(14);
+    let rightY = y;
+    rightFeatures.forEach(feature => {
+        pdf.text(feature, 115, rightY);
+        rightY += 8;
+    });
+
+    y = Math.max(leftY, rightY) + 15;
+
+    // Amenities section
+    pdf.setFontSize(18);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(10, 46, 60);
+    pdf.setTextColor(...primaryColor);
     pdf.text('Premium Amenities', 20, y);
-    y += 10;
+    y += 12;
 
-    pdf.setFontSize(10);
-    pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(51, 51, 51);
-
-    const amenities = [
-        '• 24/7 Security with CCTV Surveillance',
+    const amenitiesLeft = [
+        '• 24/7 Security & CCTV',
         '• Backup Power Supply',
         '• Modern Intercom System',
-        '• Landscaped Gardens',
+        '• Landscaped Gardens'
+    ];
+
+    const amenitiesRight = [
         '• Children\'s Play Area',
         '• Community Hall',
         '• Rooftop Terrace',
         '• Water Treatment Plant'
     ];
 
-    const col1 = amenities.slice(0, 4);
-    const col2 = amenities.slice(4);
+    pdf.setFontSize(11);
+    pdf.setFont('helvetica', 'normal');
+    pdf.setTextColor(...darkText);
 
-    col1.forEach(amenity => {
-        pdf.text(amenity, 25, y);
-        y += 6;
+    leftY = y;
+    amenitiesLeft.forEach(amenity => {
+        pdf.text(amenity, 25, leftY);
+        leftY += 7;
     });
 
-    y = y - (col1.length * 6);
-    col2.forEach(amenity => {
-        pdf.text(amenity, 115, y);
-        y += 6;
+    rightY = y;
+    amenitiesRight.forEach(amenity => {
+        pdf.text(amenity, 115, rightY);
+        rightY += 7;
     });
 
-    // Page 3: Pricing & Payment
+    // ==================== PAGE 3: PRICING & PAYMENT ====================
     pdf.addPage();
 
     // Header
-    pdf.setFillColor(10, 46, 60);
-    pdf.rect(0, 0, pageWidth, 40, 'F');
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(20);
+    pdf.setFillColor(...primaryColor);
+    pdf.rect(0, 0, pageWidth, 50, 'F');
+    pdf.setTextColor(...whiteColor);
+    pdf.setFontSize(28);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('PRICING & PAYMENT', pageWidth / 2, 25, { align: 'center' });
+    pdf.text('PRICING & PAYMENT', pageWidth / 2, 32, { align: 'center' });
 
-    y = 55;
+    y = 75;
 
-    // Pricing
-    pdf.setFontSize(14);
+    // Main price box
+    pdf.setFillColor(...secondaryColor);
+    pdf.rect(20, y, 170, 35, 'F');
+    pdf.setTextColor(...whiteColor);
+    pdf.setFontSize(24);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(10, 46, 60);
-    pdf.text('Investment Details', 20, y);
-    y += 15;
-
-    // Price Box
-    pdf.setFillColor(201, 169, 97);
-    pdf.rect(20, y - 5, 170, 30, 'F');
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(16);
-    pdf.setFont('helvetica', 'bold');
-    pdf.text('Starting Price: ৳38,75,000', pageWidth / 2, y + 5, { align: 'center' });
+    pdf.text('Starting Price: ৳38,75,000', pageWidth / 2, y + 15, { align: 'center' });
     pdf.setFontSize(12);
     pdf.setFont('helvetica', 'normal');
-    pdf.text('(Thirty-Eight Lakh Seventy-Five Thousand Taka Only)', pageWidth / 2, y + 15, { align: 'center' });
+    pdf.text('(Thirty-Eight Lakh Seventy-Five Thousand Taka)', pageWidth / 2, y + 27, { align: 'center' });
 
-    y += 45;
+    y += 50;
 
-    // EMI Details
-    pdf.setFontSize(14);
+    // Payment breakdown
+    pdf.setFontSize(16);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(10, 46, 60);
-    pdf.text('Flexible EMI Options', 20, y);
-    y += 10;
+    pdf.setTextColor(...primaryColor);
+    pdf.text('Payment Breakdown', 20, y);
+    y += 12;
 
-    pdf.setFontSize(10);
+    pdf.setFontSize(12);
     pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(51, 51, 51);
+    pdf.setTextColor(...darkText);
 
-    const emiDetails = [
-        { label: 'Monthly EMI:', value: '৳1,00,000' },
-        { label: 'Duration:', value: '36 Months' },
-        { label: 'Down Payment:', value: 'As per discussion' },
-        { label: 'Booking Money:', value: 'Contact for details' }
+    const payments = [
+        { label: 'Base Price:', value: '৳38,75,000' },
+        { label: 'Share Price:', value: '৳9,30,000' },
+        { label: 'Down Payment:', value: '৳6,00,000' },
+        { label: 'Monthly EMI (36 months):', value: '৳1,00,000' },
+        { label: 'Total Investment:', value: '৳48,05,000', bold: true }
     ];
 
-    emiDetails.forEach(detail => {
-        pdf.setFont('helvetica', 'bold');
-        pdf.text(detail.label, 25, y);
-        pdf.setFont('helvetica', 'normal');
-        pdf.text(detail.value, 70, y);
-        y += 8;
+    payments.forEach((payment, index) => {
+        if (payment.bold) {
+            pdf.setFont('helvetica', 'bold');
+            pdf.setFontSize(14);
+            y += 5;
+        } else {
+            pdf.setFont('helvetica', 'normal');
+            pdf.setFontSize(12);
+        }
+
+        pdf.text(payment.label, 25, y);
+        pdf.text(payment.value, 160, y);
+        y += payment.bold ? 12 : 10;
     });
 
     y += 10;
 
-    // Payment Benefits
-    pdf.setFontSize(14);
+    // Investment benefits
+    pdf.setFontSize(16);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(10, 46, 60);
-    pdf.text('Why Choose Dream Castle?', 20, y);
-    y += 10;
+    pdf.setTextColor(...primaryColor);
+    pdf.text('Why Invest in Dream Castle?', 20, y);
+    y += 12;
 
-    pdf.setFontSize(10);
+    pdf.setFontSize(11);
     pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(51, 51, 51);
+    pdf.setTextColor(...darkText);
 
     const benefits = [
         '✓ Prime location in Ashulia Model Town',
         '✓ Stunning lake views from every unit',
         '✓ Easy EMI payment plans',
-        '✓ Share-based ownership model',
-        '✓ High ROI potential',
+        '✓ High rental income potential (৳30-35K/month)',
         '✓ Excellent connectivity to Dhaka',
-        '✓ Peaceful and serene environment',
+        '✓ Near universities and educational institutions',
+        '✓ Future Uttara bridge proximity',
         '✓ Trusted developer with proven track record'
     ];
 
     benefits.forEach(benefit => {
         pdf.text(benefit, 25, y);
-        y += 7;
+        y += 8;
     });
 
-    // Page 4: Location & Contact
+    // ==================== PAGE 4: LOCATION & CONTACT ====================
     pdf.addPage();
 
     // Header
-    pdf.setFillColor(10, 46, 60);
-    pdf.rect(0, 0, pageWidth, 40, 'F');
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(20);
+    pdf.setFillColor(...primaryColor);
+    pdf.rect(0, 0, pageWidth, 50, 'F');
+    pdf.setTextColor(...whiteColor);
+    pdf.setFontSize(28);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('LOCATION & CONTACT', pageWidth / 2, 25, { align: 'center' });
+    pdf.text('LOCATION & CONTACT', pageWidth / 2, 32, { align: 'center' });
 
-    y = 55;
+    y = 75;
 
-    // Location
+    // Location section
+    pdf.setFontSize(16);
+    pdf.setFont('helvetica', 'bold');
+    pdf.setTextColor(...primaryColor);
+    pdf.text('Project Location', 20, y);
+    y += 12;
+
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'normal');
+    pdf.setTextColor(...darkText);
+    pdf.text('Ashulia Model Town, 1 No Hall, Zero Point', 25, y);
+    y += 8;
+    pdf.text('Block-F, Road No 1/A (North), Birulia', 25, y);
+    y += 8;
+    pdf.text('Saver, Dhaka - 1344, Bangladesh', 25, y);
+    y += 20;
+
+    // Nearby landmarks
     pdf.setFontSize(14);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(10, 46, 60);
-    pdf.text('Project Location', 20, y);
+    pdf.setTextColor(...primaryColor);
+    pdf.text('Nearby Landmarks', 20, y);
     y += 10;
 
-    pdf.setFontSize(10);
+    pdf.setFontSize(11);
     pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(51, 51, 51);
-    pdf.text('Ashulia Model Town, 1 No Hall, Zero Point', 25, y);
-    y += 6;
-    pdf.text('Block-F, Road No 1/A (North), Birulia', 25, y);
-    y += 6;
-    pdf.text('Saver, Dhaka - 1344, Bangladesh', 25, y);
-    y += 15;
+    pdf.setTextColor(...darkText);
 
-    // Nearby Landmarks
-    pdf.setFontSize(12);
-    pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(10, 46, 60);
-    pdf.text('Nearby Landmarks:', 25, y);
-    y += 8;
-
-    pdf.setFontSize(10);
-    pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(51, 51, 51);
     const landmarks = [
-        '• Close to Ashulia Lake',
+        '• Adjacent to Ashulia Lake',
         '• 5 minutes from Ashulia Bus Stand',
         '• Easy access to Dhaka-Aricha Highway',
         '• Near educational institutions',
-        '• Shopping centers within reach'
+        '• Shopping centers within reach',
+        '• Future Uttara bridge connectivity'
     ];
 
     landmarks.forEach(landmark => {
-        pdf.text(landmark, 30, y);
-        y += 6;
+        pdf.text(landmark, 25, y);
+        y += 7;
     });
 
     y += 15;
 
-    // Contact Information
-    pdf.setFillColor(201, 169, 97);
-    pdf.rect(20, y, 170, 60, 'F');
+    // Contact information box
+    pdf.setFillColor(...secondaryColor);
+    pdf.rect(20, y, 170, 70, 'F');
 
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(16);
+    pdf.setTextColor(...whiteColor);
+    pdf.setFontSize(20);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('Contact Us', pageWidth / 2, y + 12, { align: 'center' });
+    pdf.text('GET IN TOUCH', pageWidth / 2, y + 15, { align: 'center' });
 
-    pdf.setFontSize(11);
+    pdf.setFontSize(13);
     pdf.setFont('helvetica', 'normal');
+    y += 28;
+
+    pdf.text('📞  +880 1901 372340', pageWidth / 2, y, { align: 'center' });
+    y += 10;
+    pdf.text('📞  +880 1647 712961', pageWidth / 2, y, { align: 'center' });
+    y += 10;
+    pdf.text('✉  seadreamconstruction@gmail.com', pageWidth / 2, y, { align: 'center' });
+    y += 10;
+    pdf.text('🌐  seadreamdevelopment.vercel.app', pageWidth / 2, y, { align: 'center' });
+
     y += 25;
 
-    pdf.text('📞 +880 1901 372340', pageWidth / 2, y, { align: 'center' });
-    y += 8;
-    pdf.text('📞 +880 1647 712961', pageWidth / 2, y, { align: 'center' });
-    y += 8;
-    pdf.text('✉ seadreamconstruction@gmail.com', pageWidth / 2, y, { align: 'center' });
-    y += 8;
-    pdf.text('🌐 seadreamdevelopment.vercel.app', pageWidth / 2, y, { align: 'center' });
-
-    y += 20;
-
-    // Call to Action
-    pdf.setFillColor(10, 46, 60);
+    // Call to action
+    pdf.setFillColor(...primaryColor);
     pdf.rect(40, y, 130, 25, 'F');
-    pdf.setTextColor(255, 255, 255);
-    pdf.setFontSize(14);
+    pdf.setTextColor(...whiteColor);
+    pdf.setFontSize(16);
     pdf.setFont('helvetica', 'bold');
-    pdf.text('Schedule Your Site Visit Today!', pageWidth / 2, y + 10, { align: 'center' });
-    pdf.setFontSize(10);
+    pdf.text('Schedule Your Site Visit Today!', pageWidth / 2, y + 11, { align: 'center' });
+    pdf.setFontSize(11);
     pdf.setFont('helvetica', 'normal');
-    pdf.text('Call us or visit our website to book an appointment', pageWidth / 2, y + 18, { align: 'center' });
+    pdf.text('Call us or visit our website to book an appointment', pageWidth / 2, y + 19, { align: 'center' });
 
     // Footer
-    y = 280;
-    pdf.setFontSize(8);
+    y = 285;
+    pdf.setFontSize(9);
     pdf.setTextColor(100, 100, 100);
     pdf.text('Sea Dream Construction & Developments Ltd | Trusted Real Estate Developer', pageWidth / 2, y, { align: 'center' });
-    pdf.text('© 2026 All Rights Reserved | Website by Md Parvez Mosaraf', pageWidth / 2, y + 5, { align: 'center' });
+    pdf.text('© 2026 All Rights Reserved', pageWidth / 2, y + 5, { align: 'center' });
 
     // Save the PDF
     pdf.save('Dream-Castle-Living-Brochure.pdf');
