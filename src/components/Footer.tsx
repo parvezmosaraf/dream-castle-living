@@ -20,7 +20,7 @@ const Footer = () => {
           >
             <img src={logo} alt="Sea Dream Developments" className="h-16 w-auto" />
             <p className="text-primary-foreground/80 leading-relaxed">
-              Sea Dream Construction & Developments Ltd. builds premium residential 
+              Sea Dream Construction & Developments Ltd. builds premium residential
               properties through share-based ownership, making luxury living accessible.
             </p>
             <div className="flex gap-4">
@@ -133,12 +133,21 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-4 md:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/60">
-            <p>© {currentYear} Sea Dream Developments Ltd. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:text-secondary transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-secondary transition-colors">Terms of Service</a>
-            </div>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 text-sm text-primary-foreground/60">
+            <p className="text-center">
+              © 2026 Sea Dream Developments Ltd. All rights reserved.
+              <span className="hidden md:inline"> | </span>
+              <br className="md:hidden" />
+              The website is created by{' '}
+              <a
+                href="https://www.linkedin.com/in/md-parvez-mosaraf/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-secondary hover:text-secondary/80 transition-colors underline"
+              >
+                Md Parvez Mosaraf
+              </a>
+            </p>
           </div>
         </div>
       </div>

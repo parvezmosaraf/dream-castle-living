@@ -3,13 +3,14 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingButtons from '@/components/FloatingButtons';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  MessageCircle, 
-  Send, 
-  User, 
+import { useLanguage } from '@/contexts/LanguageContext';
+import {
+  Phone,
+  Mail,
+  MapPin,
+  MessageCircle,
+  Send,
+  User,
   Calendar,
   Banknote,
   Check
@@ -17,6 +18,8 @@ import {
 import { toast } from 'sonner';
 
 const Contact = () => {
+  const { t } = useLanguage();
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -29,11 +32,11 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    toast.success('Thank you for your inquiry! We will contact you soon.');
+
+    toast.success(t('contact.form.successMessage'));
     setFormData({ name: '', phone: '', email: '', budget: '', message: '' });
     setIsSubmitting(false);
   };
@@ -48,7 +51,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       {/* Hero */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4 md:px-8">
@@ -58,14 +61,13 @@ const Contact = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <span className="text-secondary font-semibold text-sm uppercase tracking-wider">
-              Get In Touch
+              {t('contact.subtitle')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4">
-              Contact <span className="text-gradient">Us</span>
+              {t('contact.title')} <span className="text-gradient">{t('contact.titleHighlight')}</span>
             </h1>
             <p className="text-muted-foreground text-lg mt-6">
-              Ready to own your dream home? Reach out to us and we'll help you 
-              every step of the way.
+              {t('contact.description')}
             </p>
           </motion.div>
         </div>
@@ -210,43 +212,51 @@ const Contact = () => {
                   Contact Information
                 </h2>
                 <p className="text-muted-foreground">
-                  Get in touch with our sales team for property details, site visits, 
+                  Get in touch with our sales team for property details, site visits,
                   and booking information.
                 </p>
               </div>
 
               {/* Contact Cards */}
-              <div className="space-y-4">
+              <div className="space-y-5">
                 <motion.a
                   href="tel:+8801901372340"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="glass-card p-6 flex items-center gap-5 hover:shadow-luxury-lg transition-shadow"
+                  className="group glass-card p-6 flex items-center gap-6 hover:shadow-luxury-lg hover:scale-[1.02] transition-all duration-300 relative overflow-hidden"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center">
-                    <Phone className="w-7 h-7 text-primary-foreground" />
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-lg group-hover:shadow-primary/50 group-hover:scale-110 transition-all duration-300">
+                    <Phone className="w-8 h-8 text-primary-foreground" />
                   </div>
-                  <div>
-                    <p className="text-muted-foreground text-sm">Sales Hotline</p>
-                    <p className="text-foreground font-semibold text-lg">+880 1901 372340</p>
+                  <div className="relative flex-1">
+                    <p className="text-muted-foreground text-sm font-medium mb-1">Sales Hotline</p>
+                    <p className="text-foreground font-bold text-xl">+880 1901 372340</p>
                   </div>
                 </motion.a>
 
                 <motion.a
-                  href="tel:+8801647712961"
+                  href="https://wa.me/8801647712961"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 }}
-                  className="glass-card p-6 flex items-center gap-5 hover:shadow-luxury-lg transition-shadow"
+                  className="group glass-card p-6 flex items-center gap-6 hover:shadow-luxury-lg hover:scale-[1.02] transition-all duration-300 relative overflow-hidden"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-[#25D366] flex items-center justify-center">
-                    <MessageCircle className="w-7 h-7 text-white" />
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#25D366]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-[#25D366] to-[#20BA5A] flex items-center justify-center shadow-lg group-hover:shadow-[#25D366]/50 group-hover:scale-110 transition-all duration-300">
+                    <MessageCircle className="w-8 h-8 text-white" />
                   </div>
-                  <div>
-                    <p className="text-muted-foreground text-sm">WhatsApp</p>
-                    <p className="text-foreground font-semibold text-lg">+880 1647 712961</p>
+                  <div className="relative flex-1">
+                    <p className="text-muted-foreground text-sm font-medium mb-1">WhatsApp</p>
+                    <p className="text-foreground font-bold text-xl">+880 1647 712961</p>
                   </div>
                 </motion.a>
 
@@ -256,14 +266,17 @@ const Contact = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
-                  className="glass-card p-6 flex items-center gap-5 hover:shadow-luxury-lg transition-shadow"
+                  className="group glass-card p-6 flex items-center gap-6 hover:shadow-luxury-lg hover:scale-[1.02] transition-all duration-300 relative overflow-hidden"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center">
-                    <Mail className="w-7 h-7 text-secondary-foreground" />
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-secondary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-lg group-hover:shadow-secondary/50 group-hover:scale-110 transition-all duration-300">
+                    <Mail className="w-8 h-8 text-secondary-foreground" />
                   </div>
-                  <div>
-                    <p className="text-muted-foreground text-sm">Email</p>
-                    <p className="text-foreground font-semibold">seadreamconstruction@gmail.com</p>
+                  <div className="relative flex-1">
+                    <p className="text-muted-foreground text-sm font-medium mb-1">Email</p>
+                    <p className="text-foreground font-bold text-lg break-all">seadreamconstruction@gmail.com</p>
                   </div>
                 </motion.a>
 
@@ -272,14 +285,14 @@ const Contact = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.3 }}
-                  className="glass-card p-6 flex items-start gap-5"
+                  className="glass-card p-6 flex items-start gap-6 bg-gradient-to-br from-accent/5 to-transparent"
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-accent flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-7 h-7 text-accent-foreground" />
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <MapPin className="w-8 h-8 text-accent-foreground" />
                   </div>
-                  <div>
-                    <p className="text-muted-foreground text-sm">Office Address</p>
-                    <p className="text-foreground font-semibold">
+                  <div className="flex-1">
+                    <p className="text-muted-foreground text-sm font-medium mb-2">Office Address</p>
+                    <p className="text-foreground font-semibold leading-relaxed">
                       Ashulia Model Town, 1 No Hall, Zero Point,<br />
                       Block-F, Road No 1/A (North),<br />
                       Birulia, Saver, Dhaka

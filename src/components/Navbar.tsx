@@ -1,21 +1,25 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone, Calendar } from 'lucide-react';
+import { Menu, X, Phone, Calendar, Sun, Moon } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import logo from '@/assets/logo.png';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useTheme } from '@/contexts/ThemeContext';
+import logo from '@/assets/logo-white.png';
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Project', href: '/project' },
-  { name: 'Amenities', href: '/amenities' },
-  { name: 'Gallery', href: '/gallery' },
-  { name: 'Location', href: '/location' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'nav.home', href: '/' },
+  { name: 'nav.project', href: '/project' },
+  { name: 'nav.amenities', href: '/amenities' },
+  { name: 'nav.gallery', href: '/gallery' },
+  { name: 'nav.location', href: '/location' },
+  { name: 'nav.contact', href: '/contact' },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,11 +34,10 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-card/95 backdrop-blur-xl shadow-luxury py-3'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+        ? 'bg-card/95 backdrop-blur-xl shadow-luxury py-3'
+        : 'bg-gradient-to-b from-black/60 via-black/40 to-transparent py-5'
+        }`}
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
@@ -43,7 +46,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Sea Dream Developments"
-              className="h-12 md:h-14 w-auto object-contain"
+              className="h-14 md:h-16 lg:h-18 w-auto object-contain"
             />
           </Link>
 
@@ -53,39 +56,95 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className="animated-underline text-foreground/80 hover:text-primary font-medium transition-colors duration-300"
+                className={`animated-underline font-medium transition-colors duration-300 ${isScrolled
+                  ? 'text-foreground/80 hover:text-primary'
+                  : 'text-white/90 hover:text-secondary'
+                  }`}
               >
-                {link.name}
+                {t(link.name)}
               </Link>
             ))}
           </div>
 
           {/* CTA Buttons - Desktop */}
           <div className="hidden lg:flex items-center gap-4">
+            {/* Language Toggle */}
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
+              className={`px-3 py-1.5 rounded-lg font-semibold text-sm transition-all ${isScrolled
+                ? 'bg-primary/10 text-primary hover:bg-primary/20'
+                : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+            >
+              {language === 'en' ? 'বাং' : 'EN'}
+            </button>
+
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg transition-all ${isScrolled
+                ? 'bg-primary/10 text-primary hover:bg-primary/20'
+                : 'bg-white/10 text-white hover:bg-white/20'
+                }`}
+            >
+              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+
             <a
               href="tel:+8801901372340"
-              className="flex items-center gap-2 text-foreground/80 hover:text-primary transition-colors"
+              className={`flex items-center gap-2 transition-colors ${isScrolled
+                ? 'text-foreground/80 hover:text-primary'
+                : 'text-white/90 hover:text-secondary'
+                }`}
             >
               <Phone className="w-4 h-4" />
-              <span className="font-medium">+880 1901 372340</span>
+              <span className="font-medium">{t('nav.phone')}</span>
             </a>
             <Link
               to="/contact"
               className="btn-luxury flex items-center gap-2 !py-3 !px-6"
             >
               <Calendar className="w-4 h-4" />
-              <span>Book Visit</span>
+              <span>{t('nav.bookVisit')}</span>
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-foreground hover:text-primary transition-colors"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Menu Button + Toggles */}
+          <div className="lg:hidden flex items-center gap-3">
+            {/* Language Toggle - Mobile */}
+            <button
+              onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
+              className={`px-2.5 py-1.5 rounded-lg font-semibold text-xs transition-all ${isScrolled
+                ? 'bg-primary/10 text-primary'
+                : 'bg-white/10 text-white'
+                }`}
+            >
+              {language === 'en' ? 'বাং' : 'EN'}
+            </button>
+
+            {/* Theme Toggle - Mobile */}
+            <button
+              onClick={toggleTheme}
+              className={`p-1.5 rounded-lg transition-all ${isScrolled
+                ? 'bg-primary/10 text-primary'
+                : 'bg-white/10 text-white'
+                }`}
+            >
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            </button>
+
+            {/* Hamburger Menu */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`p-2 transition-colors ${isScrolled
+                ? 'text-foreground hover:text-primary'
+                : 'text-white hover:text-secondary'
+                }`}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -112,7 +171,7 @@ const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     className="block py-3 text-lg font-medium text-foreground/80 hover:text-primary transition-colors border-b border-border/50"
                   >
-                    {link.name}
+                    {t(link.name)}
                   </Link>
                 </motion.div>
               ))}

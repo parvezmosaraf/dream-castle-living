@@ -1,12 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Sea Dream Premium Real Estate Design System
    Luxury | Trust | Modern | Conversion-focused
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer base {
   :root {
@@ -52,12 +52,12 @@
     --forest-light: 155 40% 40%;
     --cream: 40 40% 96%;
     --cream-dark: 40 25% 90%;
-    
+
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(155 55% 20% / 0.95), hsl(155 45% 30% / 0.85));
     --gradient-gold: linear-gradient(135deg, hsl(43 70% 55%), hsl(43 60% 45%));
-    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+
     /* Shadows */
     --shadow-sm: 0 2px 8px hsl(155 30% 20% / 0.08);
     --shadow-md: 0 4px 20px hsl(155 30% 20% / 0.12);
@@ -104,7 +104,7 @@
     --ring: 155 50% 45%;
 
     --gradient-hero: linear-gradient(135deg, hsl(160 30% 5% / 0.98), hsl(160 25% 12% / 0.95));
-    
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -130,12 +130,18 @@
     font-family: 'Inter', sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Playfair Display', serif;
   }
 }
 
 @layer components {
+
   /* Glassmorphism cards */
   .glass-card {
     @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-2xl;
@@ -166,7 +172,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
     transition: left 0.5s;
   }
 
@@ -232,20 +238,32 @@
   }
 
   @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
   }
 
   /* Shimmer effect */
   .shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
 
   @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
   }
 
   /* Stats counter style */
@@ -253,6 +271,7 @@
     @apply text-5xl md:text-6xl font-bold;
     font-family: 'Playfair Display', serif;
     background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

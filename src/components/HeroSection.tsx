@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 import heroImage from '@/assets/building-hero.jpeg';
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background Image with Parallax Effect */}
@@ -38,7 +41,7 @@ const HeroSection = () => {
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 backdrop-blur-sm text-secondary font-medium text-sm mb-6">
                 <MapPin className="w-4 h-4" />
-                Ashulia Model Town, Dhaka
+                {t('hero.location')}
               </span>
             </motion.div>
 
@@ -48,8 +51,8 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-primary-foreground leading-tight"
             >
-              The Dream
-              <span className="block text-gradient-gold">Castle</span>
+              {t('hero.title')}
+              <span className="block text-gradient-gold">{t('hero.titleHighlight')}</span>
             </motion.h1>
 
             <motion.p
@@ -58,9 +61,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed"
             >
-              Experience luxury living with breathtaking lake views. A premium residential 
-              development by Sea Dream Developments Ltd, offering 1550 sqft apartments 
-              with world-class amenities.
+              {t('hero.description')}
             </motion.p>
 
             {/* Price Highlight */}
@@ -70,12 +71,12 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="glass-card-dark p-6 inline-block"
             >
-              <p className="text-primary-foreground/70 text-sm mb-1">Starting from</p>
+              <p className="text-primary-foreground/70 text-sm mb-1">{t('hero.priceLabel')}</p>
               <p className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                ৳ 38,75,000
+                {t('hero.price')}
               </p>
               <p className="text-primary-foreground/70 text-sm mt-1">
-                EMI: ৳1 Lakh/month × 36 months
+                {t('hero.emi')}
               </p>
             </motion.div>
 
@@ -90,7 +91,7 @@ const HeroSection = () => {
                 to="/project"
                 className="btn-gold flex items-center gap-2 group"
               >
-                <span>View Project</span>
+                <span>{t('hero.viewProject')}</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
@@ -98,7 +99,7 @@ const HeroSection = () => {
                 className="btn-outline-luxury !border-primary-foreground/30 !text-primary-foreground hover:!bg-primary-foreground hover:!text-primary flex items-center gap-2"
               >
                 <Play className="w-5 h-5" />
-                <span>Book a Visit</span>
+                <span>{t('hero.bookVisit')}</span>
               </Link>
             </motion.div>
           </div>
@@ -111,10 +112,10 @@ const HeroSection = () => {
             className="hidden lg:grid grid-cols-2 gap-4"
           >
             {[
-              { label: 'Land Area', value: '10', unit: 'Katha' },
-              { label: 'Building Type', value: 'B+G+10', unit: 'Floors' },
-              { label: 'Flat Size', value: '1550', unit: 'Sqft' },
-              { label: 'EMI Period', value: '36', unit: 'Months' },
+              { label: t('hero.stats.landArea.label'), value: t('hero.stats.landArea.value'), unit: t('hero.stats.landArea.unit') },
+              { label: t('hero.stats.buildingType.label'), value: t('hero.stats.buildingType.value'), unit: t('hero.stats.buildingType.unit') },
+              { label: t('hero.stats.flatSize.label'), value: t('hero.stats.flatSize.value'), unit: t('hero.stats.flatSize.unit') },
+              { label: t('hero.stats.emiPeriod.label'), value: t('hero.stats.emiPeriod.value'), unit: t('hero.stats.emiPeriod.unit') },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
