@@ -1,5 +1,5 @@
-# Robots.txt for Dream Castle Living
-# https://dream-castle-living.vercel.app/robots.txt
+# Robots.txt for Dream Castle Living - Sea Dream Developments
+# https://seadreamdevelopment.vercel.app/robots.txt
 
 User-agent: *
 Allow: /
@@ -8,7 +8,7 @@ Disallow: /api/
 Disallow: /*.json$
 
 # Sitemap location
-Sitemap: https://dream-castle-living.vercel.app/sitemap.xml
+Sitemap: https://seadreamdevelopment.vercel.app/sitemap.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
