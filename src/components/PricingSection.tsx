@@ -77,7 +77,7 @@ const PricingSection = () => {
                   {t('pricing.whatsIncluded')}
                 </h3>
                 <ul className="space-y-3">
-                  {t('pricing.features').map((feature: string, index: number) => (
+                  {(t('pricing.features') as unknown as string[]).map((feature: string, index: number) => (
                     <motion.li
                       key={feature}
                       initial={{ opacity: 0, x: -10 }}
