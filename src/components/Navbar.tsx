@@ -70,16 +70,14 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`relative font-medium transition-colors duration-300 ${isActive
-                      ? 'text-primary'
-                      : isHomePage
-                        ? (isScrolled ? 'text-foreground/80 hover:text-primary' : 'text-white/90 hover:text-secondary')
-                        : 'text-foreground/80 hover:text-primary'
+                  className={`relative font-medium transition-colors duration-300 ${isHomePage
+                      ? (isScrolled ? 'text-foreground/80 hover:text-primary' : 'text-white/90 hover:text-secondary')
+                      : 'text-foreground/80 hover:text-primary'
                     } ${!isActive ? 'animated-underline' : ''}`}
                 >
                   {t(link.name)}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-secondary rounded-full" />
                   )}
                 </Link>
               );
