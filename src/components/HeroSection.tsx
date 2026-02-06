@@ -62,7 +62,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Right Content - Main Content */}
-          <div className="space-y-8 p-8 md:p-10 rounded-3xl bg-primary/40 dark:bg-primary/50 backdrop-blur-xl border border-white/10 shadow-2xl">
+          <div className="space-y-8 p-8 md:p-10 rounded-3xl bg-primary/15 dark:bg-primary/20 backdrop-blur-2xl border border-white/20 shadow-2xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
