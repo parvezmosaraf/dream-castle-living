@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Play, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import heroImage from '@/assets/building-hero.jpeg';
+import heroImage from '@/assets/hero-image.png';
 
 const HeroSection = () => {
   const { t } = useLanguage();

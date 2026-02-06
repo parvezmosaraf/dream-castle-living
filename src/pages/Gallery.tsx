@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingButtons from '@/components/FloatingButtons';
 import { X } from 'lucide-react';
-import buildingImage from '@/assets/building-hero.jpeg';
+import buildingImage from '@/assets/hero-image.png';
 import floorPlan1 from '@/assets/floor-plan-1.jpeg';
 import floorPlan2 from '@/assets/floor-plan-2.jpeg';
 
@@ -20,14 +20,14 @@ const Gallery = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [selectedImage, setSelectedImage] = useState<typeof galleryImages[0] | null>(null);
 
-  const filteredImages = activeCategory === 'All' 
-    ? galleryImages 
+  const filteredImages = activeCategory === 'All'
+    ? galleryImages
     : galleryImages.filter(img => img.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       {/* Hero */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4 md:px-8">
@@ -43,7 +43,7 @@ const Gallery = () => {
               Project <span className="text-gradient">Gallery</span>
             </h1>
             <p className="text-muted-foreground text-lg mt-6">
-              Explore our stunning designs and spacious floor plans. See the quality 
+              Explore our stunning designs and spacious floor plans. See the quality
               and craftsmanship that defines The Dream Castle.
             </p>
           </motion.div>
@@ -58,11 +58,10 @@ const Gallery = () => {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
-                  activeCategory === category
+                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${activeCategory === category
                     ? 'bg-primary text-primary-foreground'
                     : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                }`}
+                  }`}
               >
                 {category}
               </button>
@@ -74,7 +73,7 @@ const Gallery = () => {
       {/* Gallery Grid */}
       <section className="section-padding">
         <div className="container mx-auto">
-          <motion.div 
+          <motion.div
             layout
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
@@ -95,10 +94,10 @@ const Gallery = () => {
                     alt={image.label}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  
+
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+
                   {/* Label */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <span className="text-secondary text-sm font-medium">{image.category}</span>
@@ -130,13 +129,13 @@ const Gallery = () => {
             onClick={() => setSelectedImage(null)}
             className="fixed inset-0 z-50 bg-background/95 backdrop-blur-xl flex items-center justify-center p-4"
           >
-            <button 
+            <button
               onClick={() => setSelectedImage(null)}
               className="absolute top-6 right-6 w-12 h-12 rounded-full bg-muted flex items-center justify-center hover:bg-muted/80 transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
-            
+
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}

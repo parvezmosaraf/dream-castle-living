@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Images, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import buildingImage from '@/assets/building-hero.jpeg';
+import buildingImage from '@/assets/hero-image.png';
 import floorPlan1 from '@/assets/floor-plan-1.jpeg';
 import floorPlan2 from '@/assets/floor-plan-2.jpeg';
 import video1 from '@/assets/video/video-1.mp4';

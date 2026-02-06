@@ -16,7 +16,7 @@ import {
   Home
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import heroImage from '@/assets/building-hero.jpeg';
+import heroImage from '@/assets/hero-image.png';
 import floorPlan1 from '@/assets/floor-plan-1.jpeg';
 import floorPlan2 from '@/assets/floor-plan-2.jpeg';
 
