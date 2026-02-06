@@ -4,6 +4,7 @@ import StatsSection from '@/components/StatsSection';
 import AmenitiesPreview from '@/components/AmenitiesPreview';
 import PricingSection from '@/components/PricingSection';
 import GalleryPreview from '@/components/GalleryPreview';
+import TestimonialsSection from '@/components/TestimonialsSection';
 import LocationPreview from '@/components/LocationPreview';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
@@ -19,6 +20,7 @@ const Index = () => {
         <AmenitiesPreview />
         <PricingSection />
         <GalleryPreview />
+        <TestimonialsSection />
         <LocationPreview />
         <CTASection />
       </main>
