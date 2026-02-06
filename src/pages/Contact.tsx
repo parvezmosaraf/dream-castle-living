@@ -295,7 +295,7 @@ const Contact = () => {
                     <p className="text-foreground font-semibold leading-relaxed">
                       Ashulia Model Town, 1 No Hall, Zero Point,<br />
                       Block-F, Road No 1/A (North),<br />
-                      Birulia, Saver, Dhaka
+                      Birulia, Savar, Dhaka
                     </p>
                   </div>
                 </motion.div>

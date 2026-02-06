@@ -87,7 +87,7 @@ export const en = {
             whatsapp: 'WhatsApp',
             email: 'Email',
             officeAddress: 'Office Address',
-            address: 'Ashulia Model Town, 1 No Hall, Zero Point,\nBlock-F, Road No 1/A (North),\nBirulia, Saver, Dhaka',
+            address: 'Ashulia Model Town, 1 No Hall, Zero Point,\nBlock-F, Road No 1/A (North),\nBirulia, Savar, Dhaka',
         },
         whyChoose: {
             title: 'Why Choose Sea Dream?',
@@ -130,7 +130,7 @@ export const en = {
             phone: '+880 1901 372340',
             whatsapp: '+880 1647 712961',
             email: 'seadreamconstruction@gmail.com',
-            address: 'Ashulia Model Town, Block-F\nZero Point, Road No 1/A (North)\nBirulia, Saver, Dhaka',
+            address: 'Ashulia Model Town, Block-F\nZero Point, Road No 1/A (North)\nBirulia, Savar, Dhaka',
         },
         copyright: '© 2024 Sea Dream Developments Ltd. All rights reserved.',
         builtBy: 'Built with excellence',

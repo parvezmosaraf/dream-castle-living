@@ -311,7 +311,7 @@ export const generateBrochure = () => {
     y += 8;
     pdf.text('Block-F, Road No 1/A (North), Birulia', 25, y);
     y += 8;
-    pdf.text('Saver, Dhaka - 1344, Bangladesh', 25, y);
+    pdf.text('Savar, Dhaka - 1344, Bangladesh', 25, y);
     y += 20;
 
     // Nearby landmarks

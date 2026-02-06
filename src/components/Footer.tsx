@@ -95,7 +95,7 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-secondary flex-shrink-0 mt-1" />
                 <span className="text-primary-foreground/80">
-                  Ashulia Model Town, 1 No Hall, Zero Point, Block-F, Road No 1/A (North), Birulia, Saver, Dhaka
+                  Ashulia Model Town, 1 No Hall, Zero Point, Block-F, Road No 1/A (North), Birulia, Savar, Dhaka
                 </span>
               </li>
               <li>

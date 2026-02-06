@@ -44,7 +44,7 @@ const knowledgeBase = {
         power: 'Backup generator',
     },
     location: {
-        address: 'Ashulia Model Town, Block-H, Lake View Corner, Amin Model Town, Birulia, Saver, Dhaka - 1344',
+        address: 'Ashulia Model Town, Block-H, Lake View Corner, Amin Model Town, Birulia, Savar, Dhaka - 1344',
         landmarks: [
             'Adjacent to Ashulia Lake',
             '5 minutes from Ashulia Bus Stand',
@@ -528,8 +528,8 @@ const WhatsAppChat = () => {
                                     )}
                                     <div
                                         className={`max-w-[80%] rounded-2xl px-4 py-3 ${message.sender === 'user'
-                                                ? 'bg-primary text-primary-foreground rounded-br-sm'
-                                                : 'bg-card text-foreground rounded-bl-sm shadow-sm border border-border'
+                                            ? 'bg-primary text-primary-foreground rounded-br-sm'
+                                            : 'bg-card text-foreground rounded-bl-sm shadow-sm border border-border'
                                             }`}
                                     >
                                         <p className="text-sm whitespace-pre-line leading-relaxed">{message.text}</p>

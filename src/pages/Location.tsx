@@ -121,7 +121,7 @@ const Location = () => {
                     <h3 className="font-display font-bold text-foreground text-lg">Project Address</h3>
                     <p className="text-muted-foreground mt-2">
                       Ashulia Model Town, Block-H, Lake View Corner<br />
-                      Amin Model Town, Birulia, Saver, Dhaka
+                      Amin Model Town, Birulia, Savar, Dhaka
                     </p>
                     <a
                       href="https://maps.app.goo.gl/7TU1cYZCLKjLKMcXA"
