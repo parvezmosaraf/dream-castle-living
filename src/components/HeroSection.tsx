@@ -32,7 +32,36 @@ const HeroSection = () => {
       {/* Content */}
       <div className="container mx-auto px-4 md:px-8 relative z-10 pt-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
-          {/* Left Content */}
+          {/* Left Content - Stats Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="hidden lg:grid grid-cols-2 gap-4"
+          >
+            {[
+              { label: t('hero.stats.landArea.label'), value: t('hero.stats.landArea.value'), unit: t('hero.stats.landArea.unit') },
+              { label: t('hero.stats.buildingType.label'), value: t('hero.stats.buildingType.value'), unit: t('hero.stats.buildingType.unit') },
+              { label: t('hero.stats.flatSize.label'), value: t('hero.stats.flatSize.value'), unit: t('hero.stats.flatSize.unit') },
+              { label: t('hero.stats.emiPeriod.label'), value: t('hero.stats.emiPeriod.value'), unit: t('hero.stats.emiPeriod.unit') },
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                className="glass-card p-6 hover:scale-105 transition-transform duration-300"
+              >
+                <p className="text-muted-foreground text-sm mb-2">{stat.label}</p>
+                <p className="text-3xl md:text-4xl font-display font-bold text-primary">
+                  {stat.value}
+                </p>
+                <p className="text-foreground/70 text-sm">{stat.unit}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Right Content - Main Content */}
           <div className="space-y-8 p-8 md:p-10 rounded-3xl bg-primary/40 dark:bg-primary/50 backdrop-blur-xl border border-white/10 shadow-2xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -103,35 +132,6 @@ const HeroSection = () => {
               </Link>
             </motion.div>
           </div>
-
-          {/* Right Content - Stats Cards */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="hidden lg:grid grid-cols-2 gap-4"
-          >
-            {[
-              { label: t('hero.stats.landArea.label'), value: t('hero.stats.landArea.value'), unit: t('hero.stats.landArea.unit') },
-              { label: t('hero.stats.buildingType.label'), value: t('hero.stats.buildingType.value'), unit: t('hero.stats.buildingType.unit') },
-              { label: t('hero.stats.flatSize.label'), value: t('hero.stats.flatSize.value'), unit: t('hero.stats.flatSize.unit') },
-              { label: t('hero.stats.emiPeriod.label'), value: t('hero.stats.emiPeriod.value'), unit: t('hero.stats.emiPeriod.unit') },
-            ].map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                className="glass-card p-6 hover:scale-105 transition-transform duration-300"
-              >
-                <p className="text-muted-foreground text-sm mb-2">{stat.label}</p>
-                <p className="text-3xl md:text-4xl font-display font-bold text-primary">
-                  {stat.value}
-                </p>
-                <p className="text-foreground/70 text-sm">{stat.unit}</p>
-              </motion.div>
-            ))}
-          </motion.div>
         </div>
       </div>
 
