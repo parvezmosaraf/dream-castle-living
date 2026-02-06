@@ -60,7 +60,7 @@ const Navbar = () => {
               src={isHomePage && !isScrolled ? logoWhite : logoDark}
               alt="Sea Dream Developments"
               className="w-auto object-contain transition-opacity duration-300"
-              style={{ width: '220px', height: '80px' }}
+              style={{ height: '64px' }}
             />
           </Link>
 
