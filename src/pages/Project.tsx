@@ -16,13 +16,17 @@ import {
   Shield,
   Home
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import heroImage from '@/assets/hero-image.png';
 import buildingHero from '@/assets/building-hero.jpeg';
 import floorPlan1 from '@/assets/floor-plan-1.jpeg';
 import floorPlan2 from '@/assets/floor-plan-2.jpeg';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import livingRoom from '@/assets/living-room.png';
+import kitchen from '@/assets/kitchen.png';
+import bedroomPhase2 from '@/assets/bedroom-phase2.png';
+import rooftopPhase2 from '@/assets/rooftop-phase2.png';
 
 const projectsData = [
   {
@@ -35,6 +39,11 @@ const projectsData = [
     image: heroImage,
     location: 'Ashulia Model Town',
     description: 'A premium residential development offering luxury living with world-class amenities and stunning lake views in Ashulia.',
+    gallery: [
+      { id: 1, image: livingRoom, title: 'Luxurious Living Room' },
+      { id: 2, image: kitchen, title: 'Modern Modular Kitchen' },
+      { id: 3, image: heroImage, title: 'Building Front View' },
+    ],
     specifications: [
       { icon: Building2, label: 'Land Area', value: '10 Katha' },
       { icon: Layers, label: 'Building Type', value: 'B+G+10 Floors' },
@@ -57,9 +66,6 @@ const projectsData = [
       'Gas, water, electricity supply',
       'Lake view from living areas',
       'Adjacent park access',
-      '50ft wide road frontage',
-      'Near future Uttara bridge',
-      'Close to universities',
     ],
     floorPlans: [
       { title: 'Unit-B Layout', desc: '1080 Sqft - Typical Floor', image: floorPlan1 },
@@ -83,6 +89,11 @@ const projectsData = [
     image: buildingHero,
     location: 'Ashulia Model Town',
     description: 'Phase II of our prestigious development, offering even more premium features and modern living spaces in the heart of Ashulia.',
+    gallery: [
+      { id: 1, image: bedroomPhase2, title: 'Premium Smart Bedroom' },
+      { id: 2, image: rooftopPhase2, title: 'Stunning Rooftop Lounge' },
+      { id: 3, image: buildingHero, title: 'Phase II Concept' },
+    ],
     specifications: [
       { icon: Building2, label: 'Land Area', value: '12 Katha' },
       { icon: Layers, label: 'Building Type', value: 'B+G+12 Floors' },
@@ -102,8 +113,6 @@ const projectsData = [
       'Sky lounge and infinity rooftop garden',
       'Advanced 3-tier security system',
       'Centralized gas and water purification',
-      'Full capacity power backup',
-      'Direct lakefront access',
     ],
     floorPlans: [
       { title: 'Premium Unit-A', desc: '1650 Sqft - Luxury Layout', image: floorPlan1 },
@@ -124,7 +133,51 @@ const categories = [
   'Ashulia Model Town'
 ];
 
-const ProjectListingSection = ({ onSelectProject }: { onSelectProject: (id: number) => void }) => {
+const ImageGallerySection = ({ images }: { images: { id: number, image: string, title: string }[] }) => {
+  return (
+    <section className="section-padding">
+      <div className="container mx-auto px-4 md:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="text-secondary font-semibold text-sm uppercase tracking-wider">
+            Project Highlights
+          </span>
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mt-4">
+            Detailed <span className="text-gradient">Gallery</span>
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {images.map((img, index) => (
+            <motion.div
+              key={img.id}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group relative rounded-3xl overflow-hidden aspect-[4/3] shadow-lg border border-border"
+            >
+              <img
+                src={img.image}
+                alt={img.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <p className="text-white font-display font-bold text-lg">{img.title}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ProjectListingSection = () => {
   const [activeCategory, setActiveCategory] = useState('All');
 
   const filteredProjects = activeCategory === 'All'
@@ -183,53 +236,58 @@ const ProjectListingSection = ({ onSelectProject }: { onSelectProject: (id: numb
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
-              <motion.div
+              <Link
                 key={project.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                onClick={() => onSelectProject(project.id)}
-                className="group bg-card rounded-3xl overflow-hidden border border-border shadow-luxury hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                to={`/project/${project.id}`}
+                className="block"
+                onClick={() => window.scrollTo(0, 0)}
               >
-                {/* Image Container */}
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md bg-opacity-90">
-                    {project.status}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-widest mb-2">
-                    <MapPin className="w-3 h-3" />
-                    {project.category}
-                  </div>
-                  <h3 className="text-xl font-display font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-muted-foreground text-xs mb-6">
-                    <Home className="w-4 h-4" />
-                    {project.bedrooms}
-                  </div>
-
-                  <div className="pt-4 border-t border-border flex items-center justify-between group/footer">
-                    <span className="text-sm font-medium text-foreground/70 group-hover/footer:text-primary transition-colors">
-                      {project.brandName}
-                    </span>
-                    <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center group-hover/footer:bg-primary group-hover/footer:text-white transition-all">
-                      <ChevronRight className="w-4 h-4" />
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4 }}
+                  className="group bg-card rounded-3xl overflow-hidden border border-border shadow-luxury hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                >
+                  {/* Image Container */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute top-4 right-4 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md bg-opacity-90">
+                      {project.status}
                     </div>
                   </div>
-                </div>
-              </motion.div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 text-primary font-bold text-[10px] uppercase tracking-widest mb-2">
+                      <MapPin className="w-3 h-3" />
+                      {project.category}
+                    </div>
+                    <h3 className="text-xl font-display font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                    <div className="flex items-center gap-2 text-muted-foreground text-xs mb-6">
+                      <Home className="w-4 h-4" />
+                      {project.bedrooms}
+                    </div>
+
+                    <div className="pt-4 border-t border-border flex items-center justify-between group/footer">
+                      <span className="text-sm font-medium text-foreground/70 group-hover/footer:text-primary transition-colors">
+                        {project.brandName}
+                      </span>
+                      <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center group-hover/footer:bg-primary group-hover/footer:text-white transition-all">
+                        <ChevronRight className="w-4 h-4" />
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
             ))}
           </AnimatePresence>
         </div>
@@ -251,15 +309,12 @@ const ProjectListingSection = ({ onSelectProject }: { onSelectProject: (id: numb
 };
 
 const Project = () => {
-  const [selectedProjectId, setSelectedProjectId] = useState(1);
+  const { id } = useParams();
+  const navigate = useNavigate();
   const { t } = useLanguage();
 
-  const project = projectsData.find(p => p.id === selectedProjectId) || projectsData[0];
-
-  const handleSelectProject = (id: number) => {
-    setSelectedProjectId(id);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const projectId = id ? parseInt(id) : 1;
+  const project = projectsData.find(p => p.id === projectId) || projectsData[0];
 
   return (
     <div className="min-h-screen bg-background">
@@ -316,11 +371,11 @@ const Project = () => {
         </div>
       </section>
 
-      {/* Projects Listing Integration */}
-      <ProjectListingSection onSelectProject={handleSelectProject} />
+      {/* Detailed Gallery Section */}
+      <ImageGallerySection images={project.gallery} />
 
       {/* Floor Plans */}
-      <section className="section-padding">
+      <section className="section-padding bg-muted/10">
         <div className="container mx-auto">
           <motion.div
             key={project.id + '-floor-header'}
@@ -449,6 +504,9 @@ const Project = () => {
           </div>
         </div>
       </section>
+
+      {/* Projects Listing Integration at bottom */}
+      <ProjectListingSection />
 
       <Footer />
       <WhatsAppChat />
