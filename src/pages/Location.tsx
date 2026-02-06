@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import WhatsAppChat from '@/components/WhatsAppChat';
 import {
   MapPin,
   GraduationCap,
@@ -222,6 +223,7 @@ const Location = () => {
       </section>
 
       <Footer />
+      <WhatsAppChat />
     </div>
   );
 };

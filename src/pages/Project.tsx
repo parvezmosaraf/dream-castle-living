@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import WhatsAppChat from '@/components/WhatsAppChat';
 import { generateBrochure } from '@/utils/brochureGenerator';
 import {
   Check,
@@ -248,6 +249,7 @@ const Project = () => {
       </section>
 
       <Footer />
+      <WhatsAppChat />
     </div>
   );
 };

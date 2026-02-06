@@ -7,6 +7,7 @@ import GalleryPreview from '@/components/GalleryPreview';
 import LocationPreview from '@/components/LocationPreview';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import WhatsAppChat from '@/components/WhatsAppChat';
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
         <CTASection />
       </main>
       <Footer />
+      <WhatsAppChat />
     </div>
   );
 };

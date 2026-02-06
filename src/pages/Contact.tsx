@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import WhatsAppChat from '@/components/WhatsAppChat';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Phone,
@@ -332,6 +333,7 @@ const Contact = () => {
       </section>
 
       <Footer />
+      <WhatsAppChat />
     </div>
   );
 };

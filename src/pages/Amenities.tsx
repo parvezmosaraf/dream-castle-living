@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import WhatsAppChat from '@/components/WhatsAppChat';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Bed,
@@ -126,6 +127,7 @@ const Amenities = () => {
       </section>
 
       <Footer />
+      <WhatsAppChat />
     </div>
   );
 };
