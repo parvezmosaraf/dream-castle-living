@@ -64,18 +64,26 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={`animated-underline font-medium transition-colors duration-300 ${isHomePage
-                  ? (isScrolled ? 'text-foreground/80 hover:text-primary' : 'text-white/90 hover:text-secondary')
-                  : 'text-foreground/80 hover:text-primary'
-                  }`}
-              >
-                {t(link.name)}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`relative font-medium transition-colors duration-300 ${isActive
+                      ? 'text-primary'
+                      : isHomePage
+                        ? (isScrolled ? 'text-foreground/80 hover:text-primary' : 'text-white/90 hover:text-secondary')
+                        : 'text-foreground/80 hover:text-primary'
+                    } ${!isActive ? 'animated-underline' : ''}`}
+                >
+                  {t(link.name)}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
           </div>
 
           {/* CTA Buttons - Desktop */}
@@ -127,8 +135,8 @@ const Navbar = () => {
             <button
               onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
               className={`px-2.5 py-1.5 rounded-lg font-semibold text-xs transition-all ${isHomePage
-                  ? (isScrolled ? 'bg-primary/10 text-primary' : 'bg-white/10 text-white')
-                  : 'bg-primary/10 text-primary'
+                ? (isScrolled ? 'bg-primary/10 text-primary' : 'bg-white/10 text-white')
+                : 'bg-primary/10 text-primary'
                 }`}
             >
               {language === 'en' ? 'বাং' : 'EN'}
@@ -138,8 +146,8 @@ const Navbar = () => {
             <button
               onClick={toggleTheme}
               className={`p-1.5 rounded-lg transition-all ${isHomePage
-                  ? (isScrolled ? 'bg-primary/10 text-primary' : 'bg-white/10 text-white')
-                  : 'bg-primary/10 text-primary'
+                ? (isScrolled ? 'bg-primary/10 text-primary' : 'bg-white/10 text-white')
+                : 'bg-primary/10 text-primary'
                 }`}
             >
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -149,8 +157,8 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 transition-colors ${isHomePage
-                  ? (isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-secondary')
-                  : 'text-foreground hover:text-primary'
+                ? (isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-secondary')
+                : 'text-foreground hover:text-primary'
                 }`}
               aria-label="Toggle menu"
             >
