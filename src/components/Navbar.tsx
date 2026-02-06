@@ -59,8 +59,8 @@ const Navbar = () => {
             <img
               src={isHomePage && !isScrolled ? logoWhite : logoDark}
               alt="Sea Dream Developments"
-              className="h-16 w-auto object-contain transition-opacity duration-300"
-              style={{ width: '180px', height: '64px' }}
+              className="w-auto object-contain transition-opacity duration-300"
+              style={{ width: '220px', height: '80px' }}
             />
           </Link>
 
