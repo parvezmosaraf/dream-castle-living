@@ -6,10 +6,10 @@ export const generateBrochure = () => {
     const pageHeight = 297;
 
     // Colors matching the brand
-    const primaryColor = [10, 46, 60]; // #0A2E3C
-    const secondaryColor = [201, 169, 97]; // #C9A961
-    const whiteColor = [255, 255, 255];
-    const darkText = [51, 51, 51];
+    const primaryColor: [number, number, number] = [10, 46, 60]; // #0A2E3C
+    const secondaryColor: [number, number, number] = [201, 169, 97]; // #C9A961
+    const whiteColor: [number, number, number] = [255, 255, 255];
+    const darkText: [number, number, number] = [51, 51, 51];
 
     // ==================== PAGE 1: COVER PAGE ====================
     // Full page dark background
