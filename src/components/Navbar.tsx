@@ -9,7 +9,7 @@ import logoDark from '@/assets/logo.png';
 
 const navLinks = [
   { name: 'nav.home', href: '/' },
-  { name: 'nav.project', href: '/projects' },
+  { name: 'nav.project', href: '/project' },
   { name: 'nav.amenities', href: '/amenities' },
   { name: 'nav.gallery', href: '/gallery' },
   { name: 'nav.location', href: '/location' },

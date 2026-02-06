@@ -4,7 +4,7 @@ export const bn: TranslationKeys = {
     // Navigation
     nav: {
         home: 'হোম',
-        project: 'প্রকল্পসমূহ',
+        project: 'প্রকল্প',
         amenities: 'সুবিধা',
         gallery: 'গ্যালারি',
         location: 'অবস্থান',

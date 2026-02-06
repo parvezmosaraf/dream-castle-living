@@ -2,7 +2,7 @@ export const en = {
     // Navigation
     nav: {
         home: 'Home',
-        project: 'Projects',
+        project: 'Project',
         amenities: 'Amenities',
         gallery: 'Gallery',
         location: 'Location',
