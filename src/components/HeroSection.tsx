@@ -14,10 +14,10 @@ const HeroSection = () => {
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: 'easeOut' }}
-        className="absolute inset-0 top-20 md:top-0"
+        className="absolute inset-0"
       >
         <div
-          className="absolute inset-0 bg-cover bg-top bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center md:bg-top bg-no-repeat"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
         {/* Gradient Overlay - Reduced opacity for clearer image */}
