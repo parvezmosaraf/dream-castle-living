@@ -60,12 +60,12 @@ export const generateBrochure = () => {
     pdf.setFont('helvetica', 'bold');
 
     const highlights = [
-        '✦  1550 sqft Spacious Units',
-        '✦  B+G+10 Floors Building',
-        '✦  Breathtaking Lake Views',
-        '✦  Flexible EMI Options',
-        '✦  Premium Amenities',
-        '✦  10 Katha Land Area'
+        '• 1550 sqft Spacious Units',
+        '• B+G+10 Floors Building',
+        '• Breathtaking Lake Views',
+        '• Flexible EMI Options',
+        '• Premium Amenities',
+        '• 10 Katha Land Area'
     ];
 
     let yPos = 185;
@@ -354,13 +354,13 @@ export const generateBrochure = () => {
     pdf.setFont('helvetica', 'normal');
     y += 28;
 
-    pdf.text('📞  +880 1901 372340', pageWidth / 2, y, { align: 'center' });
+    pdf.text('Phone: +880 1901 372340', pageWidth / 2, y, { align: 'center' });
     y += 10;
-    pdf.text('📞  +880 1647 712961', pageWidth / 2, y, { align: 'center' });
+    pdf.text('Phone: +880 1647 712961', pageWidth / 2, y, { align: 'center' });
     y += 10;
-    pdf.text('✉  seadreamconstruction@gmail.com', pageWidth / 2, y, { align: 'center' });
+    pdf.text('Email: seadreamconstruction@gmail.com', pageWidth / 2, y, { align: 'center' });
     y += 10;
-    pdf.text('🌐  seadreamdevelopment.vercel.app', pageWidth / 2, y, { align: 'center' });
+    pdf.text('Web: seadreamdevelopment.vercel.app', pageWidth / 2, y, { align: 'center' });
 
     y += 25;
 
