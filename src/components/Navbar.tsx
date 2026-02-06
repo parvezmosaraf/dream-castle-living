@@ -4,7 +4,8 @@ import { Menu, X, Phone, Calendar, Sun, Moon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
-import logo from '@/assets/logo-white.png';
+import logoWhite from '@/assets/logo-white.png';
+import logoDark from '@/assets/logo.png';
 
 const navLinks = [
   { name: 'nav.home', href: '/' },
@@ -56,7 +57,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src={logo}
+              src={isHomePage ? logoWhite : logoDark}
               alt="Sea Dream Developments"
               className="h-14 md:h-16 lg:h-18 w-auto object-contain"
             />
@@ -71,8 +72,8 @@ const Navbar = () => {
                   key={link.name}
                   to={link.href}
                   className={`relative font-medium transition-colors duration-300 ${isHomePage
-                      ? (isScrolled ? 'text-foreground/80 hover:text-primary' : 'text-white/90 hover:text-secondary')
-                      : 'text-foreground/80 hover:text-primary'
+                    ? (isScrolled ? 'text-foreground/80 hover:text-primary' : 'text-white/90 hover:text-secondary')
+                    : 'text-foreground/80 hover:text-primary'
                     } ${!isActive ? 'animated-underline' : ''}`}
                 >
                   {t(link.name)}
