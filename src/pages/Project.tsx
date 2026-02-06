@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import FloatingButtons from '@/components/FloatingButtons';
 import { generateBrochure } from '@/utils/brochureGenerator';
 import {
   Check,
@@ -249,7 +248,6 @@ const Project = () => {
       </section>
 
       <Footer />
-      <FloatingButtons />
     </div>
   );
 };

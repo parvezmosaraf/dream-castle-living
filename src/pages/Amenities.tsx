@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import FloatingButtons from '@/components/FloatingButtons';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
   Bed,
@@ -127,7 +126,6 @@ const Amenities = () => {
       </section>
 
       <Footer />
-      <FloatingButtons />
     </div>
   );
 };

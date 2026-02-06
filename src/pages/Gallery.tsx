@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import FloatingButtons from '@/components/FloatingButtons';
 import { X } from 'lucide-react';
 import buildingImage from '@/assets/hero-image.png';
 import floorPlan1 from '@/assets/floor-plan-1.jpeg';
@@ -59,8 +58,8 @@ const Gallery = () => {
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${activeCategory === category
-                    ? 'bg-primary text-primary-foreground'
-                    : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-muted text-muted-foreground hover:bg-muted/80'
                   }`}
               >
                 {category}
@@ -160,7 +159,6 @@ const Gallery = () => {
       </AnimatePresence>
 
       <Footer />
-      <FloatingButtons />
     </div>
   );
 };

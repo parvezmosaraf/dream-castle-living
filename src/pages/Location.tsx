@@ -1,53 +1,52 @@
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import FloatingButtons from '@/components/FloatingButtons';
-import { 
-  MapPin, 
-  GraduationCap, 
-  TreePine, 
-  Waves, 
-  Route, 
-  Building2, 
+import {
+  MapPin,
+  GraduationCap,
+  TreePine,
+  Waves,
+  Route,
+  Building2,
   ShoppingBag,
   Bus,
   Check
 } from 'lucide-react';
 
 const locationFeatures = [
-  { 
-    icon: GraduationCap, 
-    label: 'Educational Hub', 
+  {
+    icon: GraduationCap,
+    label: 'Educational Hub',
     description: 'Multiple universities and colleges within close proximity',
     items: ['BRAC University', 'North South University Area', 'Various Schools']
   },
-  { 
-    icon: Waves, 
-    label: 'Lake View', 
+  {
+    icon: Waves,
+    label: 'Lake View',
     description: 'Beautiful lakeside location with serene views',
     items: ['Direct lake view from apartments', 'Peaceful environment', 'Natural beauty']
   },
-  { 
-    icon: TreePine, 
-    label: 'Green Spaces', 
+  {
+    icon: TreePine,
+    label: 'Green Spaces',
     description: 'Adjacent park and lush surroundings',
     items: ['Public park access', 'Rooftop garden', 'Tree-lined streets']
   },
-  { 
-    icon: Route, 
-    label: 'Future Connectivity', 
+  {
+    icon: Route,
+    label: 'Future Connectivity',
     description: 'Upcoming infrastructure developments',
     items: ['Future bridge to Uttara', 'Road expansion planned', 'Metro connectivity']
   },
-  { 
-    icon: Building2, 
-    label: 'Prime Location', 
+  {
+    icon: Building2,
+    label: 'Prime Location',
     description: 'Strategic position in Ashulia Model Town',
     items: ['Block-H corner plot', '50ft wide road', 'Lake view corner']
   },
-  { 
-    icon: ShoppingBag, 
-    label: 'Daily Needs', 
+  {
+    icon: ShoppingBag,
+    label: 'Daily Needs',
     description: 'Essential services within reach',
     items: ['Markets nearby', 'Shopping centers', 'Healthcare facilities']
   },
@@ -57,7 +56,7 @@ const Location = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       {/* Hero */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24 bg-gradient-to-br from-primary/5 to-secondary/5">
         <div className="container mx-auto px-4 md:px-8">
@@ -73,7 +72,7 @@ const Location = () => {
               Strategic <span className="text-gradient">Location</span>
             </h1>
             <p className="text-muted-foreground text-lg mt-6">
-              Situated in the heart of Ashulia, The Dream Castle offers unparalleled 
+              Situated in the heart of Ashulia, The Dream Castle offers unparalleled
               connectivity and a perfect blend of urban convenience and natural beauty.
             </p>
           </motion.div>
@@ -104,7 +103,7 @@ const Location = () => {
                   className="w-full"
                 />
               </div>
-              
+
               {/* Address Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -223,7 +222,6 @@ const Location = () => {
       </section>
 
       <Footer />
-      <FloatingButtons />
     </div>
   );
 };
