@@ -10,12 +10,402 @@ interface Message {
     timestamp: Date;
 }
 
+// Comprehensive knowledge base about Dream Castle Living
+const knowledgeBase = {
+    project: {
+        name: 'Dream Castle Living',
+        developer: 'Sea Dream Construction & Developments Ltd',
+        type: 'Premium Lake View Apartments',
+        status: 'Under Construction',
+    },
+    pricing: {
+        basePrice: 'BDT 38,75,000',
+        basePriceWords: 'Thirty-Eight Lakh Seventy-Five Thousand Taka',
+        sharePrice: 'BDT 9,30,000',
+        downPayment: 'BDT 6,00,000',
+        monthlyEMI: 'BDT 1,00,000',
+        emiTenure: '36 months',
+        totalInvestment: 'BDT 48,05,000',
+        rentalIncome: 'BDT 30,000 - 35,000 per month',
+    },
+    apartment: {
+        size: '1550 sqft',
+        bedrooms: 3,
+        bathrooms: 3,
+        balconies: 'Lake view balconies',
+        parking: 'Dedicated parking space',
+        kitchen: 'Modern modular kitchen',
+    },
+    building: {
+        structure: 'B+G+10 Floors',
+        landArea: '10 Katha',
+        elevators: 'High-speed elevators',
+        security: '24/7 CCTV surveillance',
+        power: 'Backup generator',
+    },
+    location: {
+        address: 'Ashulia Model Town, Block-H, Lake View Corner, Amin Model Town, Birulia, Saver, Dhaka - 1344',
+        landmarks: [
+            'Adjacent to Ashulia Lake',
+            '5 minutes from Ashulia Bus Stand',
+            'Near BRAC University area',
+            'Near North South University area',
+            'Easy access to Dhaka-Aricha Highway',
+        ],
+        connectivity: 'Future Uttara bridge proximity for excellent connectivity',
+    },
+    amenities: [
+        '24/7 Security & CCTV',
+        'Backup Power Supply',
+        'High-Speed Elevators',
+        'Modern Intercom System',
+        'Landscaped Gardens',
+        "Children's Play Area",
+        'Community Hall',
+        'Rooftop Terrace',
+        'Water Treatment Plant',
+        'Dedicated Parking',
+    ],
+    contact: {
+        phone1: '+880 1901 372340',
+        phone2: '+880 1647 712961',
+        email: 'seadreamconstruction@gmail.com',
+        website: 'seadreamdevelopment.vercel.app',
+        hours: '9 AM - 9 PM daily',
+    },
+    siteVisit: {
+        availability: 'Every day 10 AM - 6 PM',
+        transportation: 'Free transportation available',
+        guidance: 'Expert guidance provided',
+    },
+};
+
+// Advanced NLP-like response system
+const getNLPResponse = (userMessage: string): string => {
+    const msg = userMessage.toLowerCase().trim();
+
+    // Greeting detection
+    const greetings = ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings'];
+    if (greetings.some(g => msg.startsWith(g)) || msg === 'hi' || msg === 'hello') {
+        return `Hello! 👋 Welcome to ${knowledgeBase.project.name}. I'm your virtual assistant, here to help you with any questions about our premium lake view apartments. What would you like to know?`;
+    }
+
+    // Thank you detection
+    if (msg.includes('thank') || msg.includes('thanks') || msg.includes('appreciate')) {
+        return "You're very welcome! 😊 I'm here to help. Feel free to ask anything else about Dream Castle Living, or call us at +880 1901 372340 for personal assistance.";
+    }
+
+    // Pricing queries - comprehensive detection
+    if (
+        msg.includes('price') || msg.includes('cost') || msg.includes('payment') ||
+        msg.includes('pay') || msg.includes('afford') || msg.includes('budget') ||
+        msg.includes('expensive') || msg.includes('cheap') || msg.includes('emi') ||
+        msg.includes('installment') || msg.includes('down payment') || msg.includes('invest')
+    ) {
+        return `💰 **Pricing & Payment Details:**
+
+**Base Price:** ${knowledgeBase.pricing.basePrice}
+(${knowledgeBase.pricing.basePriceWords})
+
+**Flexible Payment Plan:**
+• Share Price: ${knowledgeBase.pricing.sharePrice}
+• Down Payment: ${knowledgeBase.pricing.downPayment}
+• Monthly EMI: ${knowledgeBase.pricing.monthlyEMI}
+• EMI Tenure: ${knowledgeBase.pricing.emiTenure}
+
+**Total Investment:** ${knowledgeBase.pricing.totalInvestment}
+
+**Investment Benefits:**
+✓ High rental income potential (${knowledgeBase.pricing.rentalIncome})
+✓ Prime location with future appreciation
+✓ Easy EMI plans available
+
+Would you like to discuss a customized payment plan? Call us at ${knowledgeBase.contact.phone1}`;
+    }
+
+    // Size/Area/Apartment details
+    if (
+        msg.includes('size') || msg.includes('sqft') || msg.includes('square') ||
+        msg.includes('area') || msg.includes('big') || msg.includes('spacious') ||
+        msg.includes('room') || msg.includes('bedroom') || msg.includes('bathroom') ||
+        msg.includes('apartment') || msg.includes('unit') || msg.includes('flat')
+    ) {
+        return `🏠 **Apartment Specifications:**
+
+**Size:** ${knowledgeBase.apartment.size} (Spacious Units)
+
+**Layout:**
+• ${knowledgeBase.apartment.bedrooms} Bedrooms (Master bedroom with attached bath)
+• ${knowledgeBase.apartment.bathrooms} Modern Bathrooms
+• ${knowledgeBase.apartment.balconies}
+• ${knowledgeBase.apartment.kitchen}
+• Dining area
+• Living room
+
+**Additional Features:**
+• ${knowledgeBase.apartment.parking}
+• Ample natural light
+• Cross ventilation
+• Premium fixtures
+
+Would you like to see the floor plans? Call ${knowledgeBase.contact.phone1} or visit our site!`;
+    }
+
+    // Location queries
+    if (
+        msg.includes('location') || msg.includes('where') || msg.includes('address') ||
+        msg.includes('place') || msg.includes('area') || msg.includes('direction') ||
+        msg.includes('map') || msg.includes('find') || msg.includes('reach') ||
+        msg.includes('ashulia') || msg.includes('savar') || msg.includes('dhaka')
+    ) {
+        return `📍 **Prime Location:**
+
+**Address:**
+${knowledgeBase.location.address}
+
+**Nearby Landmarks:**
+${knowledgeBase.location.landmarks.map(l => `• ${l}`).join('\n')}
+
+**Connectivity:**
+${knowledgeBase.location.connectivity}
+
+**Why This Location?**
+✓ Peaceful lakeside environment
+✓ Educational hub nearby
+✓ Excellent future growth potential
+✓ Easy access to Dhaka city
+
+📱 Get directions: ${knowledgeBase.contact.phone1}
+🌐 View on map: ${knowledgeBase.contact.website}`;
+    }
+
+    // Site visit queries
+    if (
+        msg.includes('visit') || msg.includes('see') || msg.includes('tour') ||
+        msg.includes('show') || msg.includes('inspection') || msg.includes('viewing') ||
+        msg.includes('check') || msg.includes('look')
+    ) {
+        return `🏗️ **Site Visit Information:**
+
+We'd love to show you around Dream Castle Living!
+
+**Visit Schedule:**
+${knowledgeBase.siteVisit.availability}
+
+**What We Provide:**
+✓ ${knowledgeBase.siteVisit.transportation}
+✓ ${knowledgeBase.siteVisit.guidance}
+✓ Detailed project walkthrough
+✓ Floor plan viewing
+✓ Location tour
+
+**Book Your Visit:**
+📞 Call: ${knowledgeBase.contact.phone1}
+📱 WhatsApp: ${knowledgeBase.contact.phone2}
+
+Our team will arrange everything for you!`;
+    }
+
+    // Amenities/Facilities queries
+    if (
+        msg.includes('amenity') || msg.includes('amenities') || msg.includes('facility') ||
+        msg.includes('facilities') || msg.includes('feature') || msg.includes('service') ||
+        msg.includes('gym') || msg.includes('pool') || msg.includes('garden') ||
+        msg.includes('security') || msg.includes('parking') || msg.includes('elevator') ||
+        msg.includes('lift') || msg.includes('playground') || msg.includes('rooftop')
+    ) {
+        return `✨ **Premium Amenities & Facilities:**
+
+${knowledgeBase.amenities.map((a, i) => `${i + 1}. ${a}`).join('\n')}
+
+**Building Features:**
+• ${knowledgeBase.building.structure}
+• ${knowledgeBase.building.landArea} land area
+• ${knowledgeBase.building.elevators}
+• ${knowledgeBase.building.security}
+• ${knowledgeBase.building.power}
+
+**Lifestyle Benefits:**
+✓ Safe & secure environment
+✓ Family-friendly community
+✓ Modern living standards
+✓ Well-maintained premises
+
+What specific amenity would you like to know more about?`;
+    }
+
+    // Contact information queries
+    if (
+        msg.includes('contact') || msg.includes('call') || msg.includes('phone') ||
+        msg.includes('number') || msg.includes('email') || msg.includes('reach') ||
+        msg.includes('talk') || msg.includes('speak') || msg.includes('connect')
+    ) {
+        return `📞 **Contact Information:**
+
+**Phone Numbers:**
+• Primary: ${knowledgeBase.contact.phone1}
+• WhatsApp: ${knowledgeBase.contact.phone2}
+
+**Email:**
+${knowledgeBase.contact.email}
+
+**Website:**
+${knowledgeBase.contact.website}
+
+**Office Hours:**
+${knowledgeBase.contact.hours}
+
+**Developer:**
+${knowledgeBase.project.developer}
+
+Feel free to reach out anytime! Our team is ready to assist you.`;
+    }
+
+    // Investment/ROI queries
+    if (
+        msg.includes('invest') || msg.includes('return') || msg.includes('profit') ||
+        msg.includes('roi') || msg.includes('rental') || msg.includes('rent') ||
+        msg.includes('income') || msg.includes('worth')
+    ) {
+        return `💼 **Investment Opportunity:**
+
+**Why Invest in Dream Castle Living?**
+
+✓ **Prime Location:** Ashulia Model Town - rapidly developing area
+✓ **Lake View:** Unique selling point with premium value
+✓ **Rental Income:** ${knowledgeBase.pricing.rentalIncome}
+✓ **Future Growth:** Upcoming Uttara bridge connectivity
+✓ **Educational Hub:** High demand from students & faculty
+✓ **Flexible Payment:** Easy ${knowledgeBase.pricing.emiTenure} EMI plan
+
+**Investment Breakdown:**
+• Base Price: ${knowledgeBase.pricing.basePrice}
+• Total Investment: ${knowledgeBase.pricing.totalInvestment}
+• Expected Rental: ${knowledgeBase.pricing.rentalIncome}
+
+**ROI Factors:**
+✓ Property value appreciation
+✓ Steady rental income
+✓ Premium location advantage
+✓ Trusted developer
+
+Want to discuss investment details? Call ${knowledgeBase.contact.phone1}`;
+    }
+
+    // Developer/Company queries
+    if (
+        msg.includes('developer') || msg.includes('company') || msg.includes('builder') ||
+        msg.includes('who built') || msg.includes('trust') || msg.includes('reliable') ||
+        msg.includes('sea dream')
+    ) {
+        return `🏢 **About the Developer:**
+
+**${knowledgeBase.project.developer}**
+
+We are a trusted real estate developer committed to delivering quality residential projects in Dhaka.
+
+**Our Promise:**
+✓ Quality construction
+✓ Timely delivery
+✓ Transparent dealings
+✓ Customer satisfaction
+✓ Legal compliance
+
+**Current Project:**
+${knowledgeBase.project.name} - ${knowledgeBase.project.type}
+
+**Contact Us:**
+📞 ${knowledgeBase.contact.phone1}
+📧 ${knowledgeBase.contact.email}
+
+We build trust, one home at a time.`;
+    }
+
+    // Handover/Completion queries
+    if (
+        msg.includes('handover') || msg.includes('completion') || msg.includes('ready') ||
+        msg.includes('when') || msg.includes('complete') || msg.includes('finish') ||
+        msg.includes('delivery')
+    ) {
+        return `🏗️ **Project Status:**
+
+**Current Status:** ${knowledgeBase.project.status}
+
+**What This Means:**
+• Construction is actively progressing
+• Quality checks at every stage
+• Regular site updates available
+• Booking open with flexible payment
+
+**Next Steps:**
+1. Book your apartment with down payment
+2. Easy EMI for ${knowledgeBase.pricing.emiTenure}
+3. Track construction progress
+4. Handover upon completion
+
+For detailed timeline and booking:
+📞 Call: ${knowledgeBase.contact.phone1}
+🏗️ Site Visit: Available daily
+
+Book now to secure the best units!`;
+    }
+
+    // Floor plan queries
+    if (
+        msg.includes('floor plan') || msg.includes('layout') || msg.includes('design') ||
+        msg.includes('blueprint') || msg.includes('plan')
+    ) {
+        return `📐 **Floor Plans & Layout:**
+
+Our ${knowledgeBase.apartment.size} apartments feature thoughtfully designed layouts:
+
+**Space Distribution:**
+• 3 Spacious Bedrooms
+• 3 Modern Bathrooms
+• Living & Dining Area
+• Modern Kitchen
+• Lake View Balconies
+• Utility Space
+
+**Design Features:**
+✓ Optimal space utilization
+✓ Natural light & ventilation
+✓ Privacy-focused layout
+✓ Functional design
+
+**View Floor Plans:**
+📞 Call ${knowledgeBase.contact.phone1} for detailed plans
+🏗️ Visit our site for physical viewing
+
+We'll be happy to show you the complete layout!`;
+    }
+
+    // Default intelligent response
+    return `I'd be happy to help you with that! 
+
+I can provide detailed information about:
+
+💰 **Pricing & Payment** - EMI plans, costs, investment
+🏠 **Apartment Details** - Size, rooms, features
+📍 **Location** - Address, landmarks, connectivity
+✨ **Amenities** - All facilities and services
+🏗️ **Site Visits** - Schedule and arrangements
+📞 **Contact** - Phone, email, office hours
+💼 **Investment** - ROI, rental income
+
+**Quick Contact:**
+📞 ${knowledgeBase.contact.phone1}
+📧 ${knowledgeBase.contact.email}
+
+What specific information would you like to know about Dream Castle Living?`;
+};
+
 const WhatsAppChat = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState<Message[]>([
         {
             id: '1',
-            text: '👋 Hello! Welcome to Dream Castle Living. How can I help you today?',
+            text: `👋 Hello! Welcome to ${knowledgeBase.project.name}.\n\nI'm your AI assistant, ready to answer any questions about our premium lake view apartments in Ashulia. How can I help you today?`,
             sender: 'bot',
             timestamp: new Date(),
         },
@@ -28,51 +418,11 @@ const WhatsAppChat = () => {
     const phoneNumber = '+8801901372340';
 
     const quickMessages = [
-        'Tell me about the project',
         'What is the price?',
+        'Tell me about location',
         'Schedule a site visit',
-        'Payment options',
+        'What amenities do you offer?',
     ];
-
-    // Bot responses based on keywords
-    const getBotResponse = (userMessage: string): string => {
-        const msg = userMessage.toLowerCase();
-
-        if (msg.includes('price') || msg.includes('cost') || msg.includes('payment')) {
-            return "💰 Our apartments start from BDT 38,75,000 with flexible payment options:\n\n• Down Payment: BDT 6,00,000\n• Monthly EMI: BDT 1,00,000 (36 months)\n• Total Investment: BDT 48,05,000\n\nWould you like to know more about our payment plans?";
-        }
-
-        if (msg.includes('size') || msg.includes('sqft') || msg.includes('area')) {
-            return "📐 Our spacious apartments are 1550 sqft with:\n\n• 3 Bedrooms\n• 3 Bathrooms\n• Lake view balconies\n• Modern kitchen\n\nWould you like to see the floor plans?";
-        }
-
-        if (msg.includes('location') || msg.includes('where') || msg.includes('address')) {
-            return "📍 We're located at:\n\nAshulia Model Town, Block-H\nLake View Corner, Birulia\nSaver, Dhaka - 1344\n\n✨ Features:\n• Adjacent to Ashulia Lake\n• 5 min from bus stand\n• Near universities\n• Future Uttara bridge connectivity\n\nWould you like directions?";
-        }
-
-        if (msg.includes('visit') || msg.includes('site') || msg.includes('tour')) {
-            return "🏗️ We'd love to show you around!\n\nOur site visits are available:\n• Every day 10 AM - 6 PM\n• Free transportation available\n• Expert guidance provided\n\nPlease call us at +880 1901 372340 to schedule your visit!";
-        }
-
-        if (msg.includes('amenities') || msg.includes('facilities') || msg.includes('features')) {
-            return "✨ Premium Amenities:\n\n• 24/7 Security & CCTV\n• Backup Power Supply\n• High-Speed Elevators\n• Rooftop Terrace\n• Children's Play Area\n• Landscaped Gardens\n• Community Hall\n• Water Treatment Plant\n\nWhat specific amenity interests you?";
-        }
-
-        if (msg.includes('contact') || msg.includes('call') || msg.includes('phone')) {
-            return "📞 Contact Us:\n\nPhone: +880 1901 372340\nWhatsApp: +880 1647 712961\nEmail: seadreamconstruction@gmail.com\n\nOur team is available 9 AM - 9 PM daily. Feel free to call anytime!";
-        }
-
-        if (msg.includes('thank') || msg.includes('thanks')) {
-            return "You're welcome! 😊 Is there anything else you'd like to know about Dream Castle Living?";
-        }
-
-        if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) {
-            return "Hello! 👋 I'm here to help you learn about Dream Castle Living. What would you like to know?";
-        }
-
-        // Default response
-        return "I'd be happy to help you with that! For detailed information, please:\n\n📞 Call: +880 1901 372340\n📧 Email: seadreamconstruction@gmail.com\n\nOr ask me about:\n• Pricing & Payment\n• Location & Amenities\n• Site Visits\n• Floor Plans";
-    };
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -93,20 +443,24 @@ const WhatsAppChat = () => {
             };
 
             setMessages((prev) => [...prev, userMessage]);
+            const currentInput = inputMessage;
             setInputMessage('');
             setIsTyping(true);
 
-            // Simulate bot typing and response
+            // Simulate realistic typing delay based on response length
+            const response = getNLPResponse(currentInput);
+            const typingDelay = Math.min(1500 + response.length * 10, 3000);
+
             setTimeout(() => {
                 const botResponse: Message = {
                     id: (Date.now() + 1).toString(),
-                    text: getBotResponse(inputMessage),
+                    text: response,
                     sender: 'bot',
                     timestamp: new Date(),
                 };
                 setMessages((prev) => [...prev, botResponse]);
                 setIsTyping(false);
-            }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
+            }, typingDelay);
         }
     };
 
@@ -134,7 +488,7 @@ const WhatsAppChat = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className="w-[380px] bg-card rounded-2xl shadow-2xl border border-border overflow-hidden"
+                        className="w-[400px] bg-card rounded-2xl shadow-2xl border border-border overflow-hidden"
                     >
                         {/* Header */}
                         <div className="bg-gradient-to-r from-[#25D366] to-[#20BA5A] p-4 flex items-center justify-between">
@@ -143,10 +497,10 @@ const WhatsAppChat = () => {
                                     <Bot className="w-6 h-6 text-[#25D366]" />
                                 </div>
                                 <div>
-                                    <h3 className="text-white font-semibold">Dream Castle Assistant</h3>
+                                    <h3 className="text-white font-semibold">Dream Castle AI</h3>
                                     <p className="text-white/90 text-xs flex items-center gap-1">
                                         <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                                        Online
+                                        Always Online
                                     </p>
                                 </div>
                             </div>
@@ -159,7 +513,7 @@ const WhatsAppChat = () => {
                         </div>
 
                         {/* Messages Area */}
-                        <div className="h-[400px] overflow-y-auto p-4 bg-muted/20 space-y-4">
+                        <div className="h-[450px] overflow-y-auto p-4 bg-muted/20 space-y-4">
                             {messages.map((message) => (
                                 <motion.div
                                     key={message.id}
@@ -168,18 +522,18 @@ const WhatsAppChat = () => {
                                     className={`flex gap-2 ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     {message.sender === 'bot' && (
-                                        <div className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
+                                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#25D366] to-[#20BA5A] flex items-center justify-center flex-shrink-0">
                                             <Bot className="w-5 h-5 text-white" />
                                         </div>
                                     )}
                                     <div
-                                        className={`max-w-[75%] rounded-2xl px-4 py-2 ${message.sender === 'user'
+                                        className={`max-w-[80%] rounded-2xl px-4 py-3 ${message.sender === 'user'
                                                 ? 'bg-primary text-primary-foreground rounded-br-sm'
                                                 : 'bg-card text-foreground rounded-bl-sm shadow-sm border border-border'
                                             }`}
                                     >
-                                        <p className="text-sm whitespace-pre-line">{message.text}</p>
-                                        <p className="text-xs opacity-60 mt-1">
+                                        <p className="text-sm whitespace-pre-line leading-relaxed">{message.text}</p>
+                                        <p className="text-xs opacity-60 mt-1.5">
                                             {message.timestamp.toLocaleTimeString('en-US', {
                                                 hour: '2-digit',
                                                 minute: '2-digit',
@@ -201,7 +555,7 @@ const WhatsAppChat = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     className="flex gap-2 items-center"
                                 >
-                                    <div className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center">
+                                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#25D366] to-[#20BA5A] flex items-center justify-center">
                                         <Bot className="w-5 h-5 text-white" />
                                     </div>
                                     <div className="bg-card px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm border border-border">
@@ -226,7 +580,7 @@ const WhatsAppChat = () => {
                                         <button
                                             key={index}
                                             onClick={() => handleQuickMessage(quickMsg)}
-                                            className="text-xs p-2 bg-card hover:bg-primary/10 rounded-lg text-foreground transition-colors border border-border hover:border-primary"
+                                            className="text-xs p-2.5 bg-card hover:bg-primary/10 rounded-lg text-foreground transition-colors border border-border hover:border-primary text-left"
                                         >
                                             {quickMsg}
                                         </button>
@@ -243,17 +597,20 @@ const WhatsAppChat = () => {
                                     value={inputMessage}
                                     onChange={(e) => setInputMessage(e.target.value)}
                                     onKeyPress={handleKeyPress}
-                                    placeholder="Type your message..."
-                                    className="flex-1 px-4 py-2 bg-muted rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                                    placeholder="Ask me anything..."
+                                    className="flex-1 px-4 py-2.5 bg-muted rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                                 />
                                 <button
                                     onClick={handleSendMessage}
-                                    disabled={!inputMessage.trim()}
-                                    className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:bg-[#20BA5A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                    disabled={!inputMessage.trim() || isTyping}
+                                    className="w-11 h-11 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:bg-[#20BA5A] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     <Send className="w-5 h-5" />
                                 </button>
                             </div>
+                            <p className="text-xs text-muted-foreground mt-2 text-center">
+                                Powered by AI • Instant responses
+                            </p>
                         </div>
                     </motion.div>
                 )}
@@ -269,8 +626,8 @@ const WhatsAppChat = () => {
                     transition={{ type: 'spring', stiffness: 200, delay: 1 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow relative"
-                    aria-label="Chat with us"
+                    className="w-16 h-16 rounded-full bg-gradient-to-br from-[#25D366] to-[#20BA5A] text-white flex items-center justify-center shadow-lg hover:shadow-2xl transition-all relative"
+                    aria-label="Chat with AI"
                 >
                     {isOpen ? <X className="w-7 h-7" /> : <MessageCircle className="w-7 h-7" />}
 
@@ -290,10 +647,10 @@ const WhatsAppChat = () => {
                         />
                     )}
 
-                    {/* Unread Badge */}
-                    {!isOpen && messages.length > 1 && (
-                        <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center font-bold">
-                            !
+                    {/* AI Badge */}
+                    {!isOpen && (
+                        <span className="absolute -top-1 -right-1 px-1.5 py-0.5 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-[10px] rounded-full font-bold">
+                            AI
                         </span>
                     )}
                 </motion.button>
@@ -306,7 +663,7 @@ const WhatsAppChat = () => {
                     transition={{ type: 'spring', stiffness: 200, delay: 1.2 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-14 h-14 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+                    className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
                     aria-label="Call us"
                 >
                     <Phone className="w-7 h-7" />
