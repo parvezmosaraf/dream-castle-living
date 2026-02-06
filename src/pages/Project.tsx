@@ -263,6 +263,9 @@ const Project = () => {
         </div>
       </section>
 
+      {/* Projects Listing Integration */}
+      <ProjectListingSection />
+
       {/* Floor Plans */}
       <section className="section-padding">
         <div className="container mx-auto">
@@ -407,8 +410,7 @@ const Project = () => {
         </div>
       </section>
 
-      {/* Projects Listing Integration */}
-      <ProjectListingSection />
+
 
       <Footer />
       <WhatsAppChat />
