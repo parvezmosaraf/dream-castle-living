@@ -68,9 +68,9 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`animated-underline font-medium transition-colors duration-300 ${isScrolled
-                  ? 'text-foreground/80 hover:text-primary'
-                  : 'text-white/90 hover:text-secondary'
+                className={`animated-underline font-medium transition-colors duration-300 ${isHomePage
+                  ? (isScrolled ? 'text-foreground/80 hover:text-primary' : 'text-white/90 hover:text-secondary')
+                  : 'text-foreground/80 hover:text-primary'
                   }`}
               >
                 {t(link.name)}
@@ -83,9 +83,9 @@ const Navbar = () => {
             {/* Language Toggle */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-              className={`px-3 py-1.5 rounded-lg font-semibold text-sm transition-all ${isScrolled
-                ? 'bg-primary/10 text-primary hover:bg-primary/20'
-                : 'bg-white/10 text-white hover:bg-white/20'
+              className={`px-3 py-1.5 rounded-lg font-semibold text-sm transition-all ${isHomePage
+                ? (isScrolled ? 'bg-primary/10 text-primary hover:bg-primary/20' : 'bg-white/10 text-white hover:bg-white/20')
+                : 'bg-primary/10 text-primary hover:bg-primary/20'
                 }`}
             >
               {language === 'en' ? 'বাং' : 'EN'}
@@ -94,9 +94,9 @@ const Navbar = () => {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-all ${isScrolled
-                ? 'bg-primary/10 text-primary hover:bg-primary/20'
-                : 'bg-white/10 text-white hover:bg-white/20'
+              className={`p-2 rounded-lg transition-all ${isHomePage
+                ? (isScrolled ? 'bg-primary/10 text-primary hover:bg-primary/20' : 'bg-white/10 text-white hover:bg-white/20')
+                : 'bg-primary/10 text-primary hover:bg-primary/20'
                 }`}
             >
               {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -104,9 +104,9 @@ const Navbar = () => {
 
             <a
               href="tel:+8801901372340"
-              className={`flex items-center gap-2 transition-colors ${isScrolled
-                ? 'text-foreground/80 hover:text-primary'
-                : 'text-white/90 hover:text-secondary'
+              className={`flex items-center gap-2 transition-colors ${isHomePage
+                ? (isScrolled ? 'text-foreground/80 hover:text-primary' : 'text-white/90 hover:text-secondary')
+                : 'text-foreground/80 hover:text-primary'
                 }`}
             >
               <Phone className="w-4 h-4" />
@@ -126,9 +126,9 @@ const Navbar = () => {
             {/* Language Toggle - Mobile */}
             <button
               onClick={() => setLanguage(language === 'en' ? 'bn' : 'en')}
-              className={`px-2.5 py-1.5 rounded-lg font-semibold text-xs transition-all ${isScrolled
-                ? 'bg-primary/10 text-primary'
-                : 'bg-white/10 text-white'
+              className={`px-2.5 py-1.5 rounded-lg font-semibold text-xs transition-all ${isHomePage
+                  ? (isScrolled ? 'bg-primary/10 text-primary' : 'bg-white/10 text-white')
+                  : 'bg-primary/10 text-primary'
                 }`}
             >
               {language === 'en' ? 'বাং' : 'EN'}
@@ -137,9 +137,9 @@ const Navbar = () => {
             {/* Theme Toggle - Mobile */}
             <button
               onClick={toggleTheme}
-              className={`p-1.5 rounded-lg transition-all ${isScrolled
-                ? 'bg-primary/10 text-primary'
-                : 'bg-white/10 text-white'
+              className={`p-1.5 rounded-lg transition-all ${isHomePage
+                  ? (isScrolled ? 'bg-primary/10 text-primary' : 'bg-white/10 text-white')
+                  : 'bg-primary/10 text-primary'
                 }`}
             >
               {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -148,9 +148,9 @@ const Navbar = () => {
             {/* Hamburger Menu */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`p-2 transition-colors ${isScrolled
-                ? 'text-foreground hover:text-primary'
-                : 'text-white hover:text-secondary'
+              className={`p-2 transition-colors ${isHomePage
+                  ? (isScrolled ? 'text-foreground hover:text-primary' : 'text-white hover:text-secondary')
+                  : 'text-foreground hover:text-primary'
                 }`}
               aria-label="Toggle menu"
             >
