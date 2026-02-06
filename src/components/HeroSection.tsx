@@ -8,13 +8,13 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-0">
       {/* Background Image with Parallax Effect */}
       <motion.div
         initial={{ scale: 1.1 }}
         animate={{ scale: 1 }}
         transition={{ duration: 1.5, ease: 'easeOut' }}
-        className="absolute inset-0"
+        className="absolute inset-0 top-20 md:top-0"
       >
         <div
           className="absolute inset-0 bg-cover bg-top bg-no-repeat"
