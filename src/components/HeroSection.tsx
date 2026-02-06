@@ -20,9 +20,9 @@ const HeroSection = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+        {/* Gradient Overlay - Reduced opacity for clearer image */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-primary/20 to-primary/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
       </motion.div>
 
       {/* Floating Decorative Elements */}
@@ -50,6 +50,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-primary-foreground leading-tight"
+              style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)' }}
             >
               {t('hero.title')}
               <span className="block text-gradient-gold">{t('hero.titleHighlight')}</span>
@@ -60,6 +61,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed"
+              style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.3)' }}
             >
               {t('hero.description')}
             </motion.p>
