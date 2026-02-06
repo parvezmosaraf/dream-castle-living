@@ -57,7 +57,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src={isHomePage && !isScrolled ? logoWhite : logoDark}
+              src={theme === 'dark' ? logoWhite : (isHomePage && !isScrolled ? logoWhite : logoDark)}
               alt="Sea Dream Developments"
               className="w-auto object-contain transition-opacity duration-300"
               style={{ height: '64px' }}
