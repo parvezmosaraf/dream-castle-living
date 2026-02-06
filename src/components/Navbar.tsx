@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, Calendar, Sun, Moon } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useTheme } from '@/contexts/ThemeContext';
 import logo from '@/assets/logo-white.png';
@@ -20,6 +20,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,15 +31,25 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Determine navbar background based on page and scroll state
+  const getNavbarClasses = () => {
+    if (isHomePage) {
+      // Homepage: glassmorphism effect
+      return isScrolled
+        ? 'bg-card/80 backdrop-blur-2xl shadow-luxury py-3 border-b border-white/10'
+        : 'bg-primary/20 backdrop-blur-xl py-5 border-b border-white/5';
+    } else {
+      // Other pages: solid background
+      return 'bg-card shadow-luxury py-3 border-b border-border';
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-        ? 'bg-card/80 backdrop-blur-2xl shadow-luxury py-3 border-b border-white/10'
-        : 'bg-primary/20 backdrop-blur-xl py-5 border-b border-white/5'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${getNavbarClasses()}`}
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
