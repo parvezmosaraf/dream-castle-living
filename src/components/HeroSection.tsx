@@ -33,7 +33,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 md:px-8 relative z-10 pt-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 p-8 md:p-10 rounded-3xl bg-primary/40 dark:bg-primary/50 backdrop-blur-xl border border-white/10 shadow-2xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -50,7 +50,6 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-primary-foreground leading-tight"
-              style={{ textShadow: '0 2px 10px rgba(0, 0, 0, 0.3)' }}
             >
               {t('hero.title')}
               <span className="block text-gradient-gold">{t('hero.titleHighlight')}</span>
@@ -60,8 +59,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-lg md:text-xl text-primary-foreground/90 max-w-xl leading-relaxed"
-              style={{ textShadow: '0 1px 8px rgba(0, 0, 0, 0.3)' }}
+              className="text-lg md:text-xl text-primary-foreground max-w-xl leading-relaxed"
             >
               {t('hero.description')}
             </motion.p>
