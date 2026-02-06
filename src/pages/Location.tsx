@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppChat from '@/components/WhatsAppChat';
+import { useLanguage } from '@/contexts/LanguageContext';
 import {
   MapPin,
   GraduationCap,
@@ -14,46 +15,60 @@ import {
   Check
 } from 'lucide-react';
 
-const locationFeatures = [
-  {
-    icon: GraduationCap,
-    label: 'Educational Hub',
-    description: 'Multiple universities and colleges within close proximity',
-    items: ['BRAC University', 'North South University Area', 'Various Schools']
-  },
-  {
-    icon: Waves,
-    label: 'Lake View',
-    description: 'Beautiful lakeside location with serene views',
-    items: ['Direct lake view from apartments', 'Peaceful environment', 'Natural beauty']
-  },
-  {
-    icon: TreePine,
-    label: 'Green Spaces',
-    description: 'Adjacent park and lush surroundings',
-    items: ['Public park access', 'Rooftop garden', 'Tree-lined streets']
-  },
-  {
-    icon: Route,
-    label: 'Future Connectivity',
-    description: 'Upcoming infrastructure developments',
-    items: ['Future bridge to Uttara', 'Road expansion planned', 'Metro connectivity']
-  },
-  {
-    icon: Building2,
-    label: 'Prime Location',
-    description: 'Strategic position in Ashulia Model Town',
-    items: ['Block-H corner plot', '50ft wide road', 'Lake view corner']
-  },
-  {
-    icon: ShoppingBag,
-    label: 'Daily Needs',
-    description: 'Essential services within reach',
-    items: ['Markets nearby', 'Shopping centers', 'Healthcare facilities']
-  },
-];
-
 const Location = () => {
+  const { t } = useLanguage();
+
+  const locationFeatures = [
+    {
+      icon: GraduationCap,
+      label: t('location.nearUniversities'),
+      description: t('location.nearUniversitiesDesc'),
+      items: t('location.universities') as unknown as string[]
+    },
+    {
+      icon: Waves,
+      label: t('location.lakeView'),
+      description: t('location.lakeViewDesc'),
+      items: [
+        t('amenities.items.lakeView.label'),
+        t('contact.whyChoose.items')[3], // Prime lake-view location
+        t('pricing.features')[5] // Lake view location
+      ]
+    },
+    {
+      icon: TreePine,
+      label: t('location.parkAccess'),
+      description: t('location.parkAccessDesc'),
+      items: [
+        t('amenities.items.parkAccess.label'),
+        t('amenities.items.rooftopGarden.label'),
+        t('pricing.features')[4] // Balconies with views (approx)
+      ]
+    },
+    {
+      icon: Route,
+      label: t('location.futureBridge'),
+      description: t('location.futureBridgeDesc'),
+      items: [
+        t('pricing.benefits.futureBridge'),
+        'Road expansion planned',
+        'Metro connectivity'
+      ]
+    },
+    {
+      icon: Building2,
+      label: 'Prime Location',
+      description: 'Strategic position in Ashulia Model Town',
+      items: ['Block-H corner plot', '50ft wide road', 'Lake view corner']
+    },
+    {
+      icon: ShoppingBag,
+      label: 'Daily Needs',
+      description: 'Essential services within reach',
+      items: ['Markets nearby', 'Shopping centers', 'Healthcare facilities']
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -67,14 +82,13 @@ const Location = () => {
             className="text-center max-w-3xl mx-auto"
           >
             <span className="text-secondary font-semibold text-sm uppercase tracking-wider">
-              Prime Location
+              {t('location.subtitle')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground mt-4">
-              Strategic <span className="text-gradient">Location</span>
+              {t('location.title')} <span className="text-gradient">{t('location.titleHighlight')}</span>
             </h1>
             <p className="text-muted-foreground text-lg mt-6">
-              Situated in the heart of Ashulia, The Dream Castle offers unparalleled
-              connectivity and a perfect blend of urban convenience and natural beauty.
+              {t('location.description')}
             </p>
           </motion.div>
         </div>
@@ -118,10 +132,10 @@ const Location = () => {
                     <MapPin className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="font-display font-bold text-foreground text-lg">Project Address</h3>
+                    <h3 className="font-display font-bold text-foreground text-lg">{t('contact.info.officeAddress')}</h3>
                     <p className="text-muted-foreground mt-2">
-                      Ashulia Model Town, Block-H, Lake View Corner<br />
-                      Amin Model Town, Birulia, Savar, Dhaka
+                      {t('location.mapSubtitle')}<br />
+                      {t('contact.info.address').split('\n').pop()}
                     </p>
                     <a
                       href="https://maps.app.goo.gl/7TU1cYZCLKjLKMcXA"
@@ -129,7 +143,7 @@ const Location = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 text-primary font-medium mt-4 hover:underline"
                     >
-                      <span>Open in Google Maps</span>
+                      <span>{t('common.openInMaps')}</span>
                       <Route className="w-4 h-4" />
                     </a>
                   </div>
@@ -200,7 +214,7 @@ const Location = () => {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: Bus, label: '50ft Road', description: 'Wide main road for easy access and transportation' },
-              { icon: Route, label: 'Future Bridge', description: 'Upcoming bridge connecting directly to Uttara' },
+              { icon: Route, label: t('location.futureBridge'), description: t('location.futureBridgeDesc') },
               { icon: Building2, label: 'Strategic Location', description: 'Central position in growing Ashulia area' },
             ].map((item, index) => (
               <motion.div

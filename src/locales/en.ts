@@ -231,6 +231,13 @@ export const en = {
         mapLabel: 'The Dream Castle',
         mapSubtitle: 'Ashulia Model Town, Block-F, Lake View Corner',
         viewLargerMap: 'View larger map',
+        universities: [
+            'Daffodil International University',
+            'BRAC University (TARC)',
+            'Manarat University',
+            'Eastern University',
+            'City University'
+        ],
     },
 
     // CTA
