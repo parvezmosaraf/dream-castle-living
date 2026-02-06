@@ -30,7 +30,7 @@ const HeroSection = () => {
       <div className="absolute bottom-20 left-10 w-48 h-48 bg-primary/30 rounded-full blur-3xl float-animation" />
 
       {/* Content */}
-      <div className="container mx-auto px-4 md:px-8 relative z-10 pt-24">
+      <div className="container mx-auto px-4 md:px-8 relative z-10 pt-32 md:pt-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
           {/* Left Content - Stats Cards */}
           <motion.div
@@ -62,7 +62,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Right Content - Main Content */}
-          <div className="space-y-8 p-8 md:p-10 rounded-3xl bg-primary/15 dark:bg-primary/20 backdrop-blur-2xl border border-white/20 shadow-2xl">
+          <div className="space-y-6 md:space-y-8 p-6 md:p-10 rounded-3xl bg-primary/15 dark:bg-primary/20 backdrop-blur-2xl border border-white/20 shadow-2xl relative z-0">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
