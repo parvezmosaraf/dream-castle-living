@@ -17,7 +17,7 @@ const HeroSection = () => {
         className="absolute inset-0"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-top bg-no-repeat"
           style={{ backgroundImage: `url(${heroImage})` }}
         />
         {/* Gradient Overlay - Reduced opacity for clearer image */}
