@@ -9,6 +9,7 @@ import { Analytics } from "@vercel/analytics/react";
 import CookieConsent from "@/components/CookieConsent";
 import Index from "./pages/Index";
 import Project from "./pages/Project";
+import Projects from "./pages/Projects";
 import Amenities from "./pages/Amenities";
 import Gallery from "./pages/Gallery";
 import Location from "./pages/Location";
@@ -30,6 +31,7 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/project" element={<Project />} />
+              <Route path="/projects" element={<Projects />} />
               <Route path="/amenities" element={<Amenities />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/location" element={<Location />} />
