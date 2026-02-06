@@ -48,10 +48,7 @@ const projectsData = [
 
 const categories = [
   'All',
-  'Ashulia Model Town',
-  'The Premium Smart City',
-  'The Premium Royal City',
-  'Bashundhara Residencial Area'
+  'Ashulia Model Town'
 ];
 
 const ProjectListingSection = () => {
